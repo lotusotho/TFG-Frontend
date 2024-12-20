@@ -1,0 +1,85 @@
+<div class="container is-widescreen">
+  <form [formGroup]="loginForm">
+    <div class="field">
+      <label class="label">Username</label>
+      <div class="control has-icons-left has-icons-right">
+        <input
+          class="input"
+          type="text"
+          formControlName="username"
+          placeholder="Username input"
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-envelope"></i>
+        </span>
+        <span
+          class="icon is-small is-right"
+          *ngIf="
+            loginForm.get('username')?.invalid &&
+            loginForm.get('username')?.touched
+          "
+        >
+          <i class="fas fa-exclamation-triangle"></i>
+        </span>
+        <p
+          class="help is-danger"
+          *ngIf="
+            loginForm.get('username')?.invalid &&
+            loginForm.get('username')?.touched
+          "
+        >
+          Please enter a valid username.
+        </p>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Password</label>
+      <div class="control has-icons-left has-icons-right">
+        <input
+          class="input"
+          type="password"
+          formControlName="password"
+          placeholder="Password input"
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
+        <span
+          class="icon is-small is-right"
+          *ngIf="
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.touched
+          "
+        >
+          <i class="fas fa-exclamation-triangle"></i>
+        </span>
+        <p
+          class="help is-danger"
+          *ngIf="
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.touched
+          "
+        >
+          Password must be at least 5 characters.
+        </p>
+      </div>
+    </div>
+
+    <div class="field is-grouped m-1">
+      <div class="control">
+        <button
+          (click)="onSubmit()"
+          class="button is-link"
+          type="submit"
+          [disabled]="loginForm.invalid"
+        >
+          Login
+        </button>
+      </div>
+      <div class="control">
+        <button class="button is-link is-light" type="reset">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>
