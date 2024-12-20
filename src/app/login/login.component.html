@@ -70,6 +70,8 @@
       <div class="control">
         <button
           (click)="onSubmit()"
+          [routerLink]="['/home']"
+          routerLinkActive="router-link-active"
           class="button is-link"
           type="submit"
           [disabled]="loginForm.invalid"

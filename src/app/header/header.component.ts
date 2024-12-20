@@ -22,7 +22,6 @@ export class HeaderComponent {
   @ViewChild('navLogo') navLogo!: ElementRef;
   @ViewChild('navBurger') navBurger!: ElementRef;
   @ViewChild('navMenu') navMenu!: ElementRef;
-  @ViewChild('navDropdown') navDropdown!: ElementRef;
 
   toggleNavbar() {
     this.navBurger.nativeElement.classList.toggle('is-active');
@@ -34,23 +33,8 @@ export class HeaderComponent {
     this.navMenu.nativeElement.classList.remove('is-active');
   }
 
-  toggleDropdown() {
-    this.navDropdown.nativeElement.classList.toggle('is-active');
-    this.navBurger.nativeElement.classList.remove('is-active');
-    this.navMenu.nativeElement.classList.remove('is-active');
-  }
-
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event): void {
     if (!isPlatformBrowser(this.platformId)) return;
-
-    const targetElement = event.target as HTMLElement;
-
-    const isClickInsideDropdown =
-      this.navDropdown.nativeElement.contains(targetElement);
-
-    if (!isClickInsideDropdown) {
-      this.navDropdown.nativeElement.classList.remove('is-active');
-    }
   }
 }

@@ -8,11 +8,12 @@ import {
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, NgIf, ReactiveFormsModule],
+  imports: [FormsModule, NgIf, ReactiveFormsModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
@@ -33,14 +34,18 @@ export class LoginComponent {
       const formData = {
         ...this.loginForm.value,
       };
-      this.http.post('http://localhost:3000/login', formData).subscribe({
-        next: (response) => {
-          console.log('Login successful', response);
-        },
-        error: (error) => {
-          console.error('Login failed', error);
-        },
-      });
+      this.http
+        .post('http://localhost:3000/login', formData, {
+          withCredentials: true,
+        })
+        .subscribe({
+          next: (response: any) => {
+            console.log('Login successful', response);
+          },
+          error: (error) => {
+            console.error('Login failed', error);
+          },
+        });
     } else {
       console.log('Form is invalid');
     }
