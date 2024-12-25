@@ -1,21 +1,60 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { MarkdownModule } from 'ngx-markdown';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { MarkdownModule, MarkdownService } from 'ngx-markdown';
+import { marked } from 'marked';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [RouterLink, MarkdownModule],
+  imports: [FormsModule, ReactiveFormsModule, MarkdownModule],
+  providers: [MarkdownService],
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css',
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+  formContent: FormGroup;
   username = '';
-  constructor(private http: HttpClient) {}
+  markdownContent = '';
+  text_content: any;
+
+  constructor(private http: HttpClient, private fb: FormBuilder) {
+    this.formContent = this.fb.group({
+      text_content: ['', [Validators.required, Validators.minLength(5)]],
+    });
+  }
 
   ngOnInit() {
     this.getUsernameByToken();
+  }
+
+  postContent() {
+    if (this.formContent.valid) {
+      const markdown = this.formContent.value.text_content;
+      this.text_content = this.convertMarkdownToJson(markdown);
+      this.http
+        .post(
+          'http://localhost:3000/submitcontent',
+          { markdown, text_content: this.text_content },
+          {
+            withCredentials: true,
+          }
+        )
+        .subscribe({
+          next: (response: any) => {
+            console.log('Content posted', response);
+          },
+          error: (error) => {
+            console.error('Error posting content:', error);
+          },
+        });
+    }
   }
 
   getUsernameByToken() {
@@ -29,5 +68,10 @@ export class DashboardComponent implements OnInit {
           console.error('Error fetching secure data:', error);
         },
       });
+  }
+
+  convertMarkdownToJson(markdown: string): any {
+    const tokens = marked.lexer(markdown);
+    return tokens;
   }
 }

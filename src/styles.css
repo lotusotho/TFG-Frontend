@@ -1,3 +1,17 @@
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+:root {
+  --bulma-primary-h: 33deg;
+  --bulma-primary-s: 75%;
+  --bulma-primary-l: 81%;
+  --bulma-link-h: 352deg;
+  --bulma-link-s: 25%;
+  --bulma-link-l: 70%;
+  --bulma-info-h: 278deg;
+  --bulma-info-s: 19%;
+  --bulma-info-l: 52%;
+  --bulma-body-background-color: #272743;
+  --bulma-body-color: #faf5ef;
+}

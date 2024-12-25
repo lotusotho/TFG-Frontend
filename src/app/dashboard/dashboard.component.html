@@ -2,11 +2,29 @@
   <h1 class="title is-1">
     Your blog, {{ username.charAt(0).toUpperCase() }}{{ username.slice(1) }}:
   </h1>
-  <a
-    [routerLink]="['/{{username}}/dashboard']"
-    routerLinkActive="router-link-active"
-    >{{ username }}'s Blog</a
-  >
-
-  <markdown></markdown>
+  <form [formGroup]="formContent">
+    <div class="field">
+      <label for="text_content">Texto</label>
+      <textarea
+        id="text_content"
+        class="textarea"
+        formControlName="text_content"
+        placeholder="Content text"
+        rows="10"
+        (input)="markdownContent = formContent.get('text_content')?.value"
+      ></textarea>
+    </div>
+    <button
+      class="button is-primary"
+      type="submit"
+      [disabled]="formContent.invalid"
+      (click)="postContent()"
+    >
+      Subir
+    </button>
+  </form>
+  <div class="preview">
+    <h2 class="title is-2">Preview</h2>
+    <markdown [data]="markdownContent"></markdown>
+  </div>
 </div>
