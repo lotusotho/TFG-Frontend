@@ -48,8 +48,20 @@
       >
         Home
       </a>
-      <a class="navbar-item subtitle is-4"> Documentation </a>
-      <a class="navbar-item subtitle is-4"> About </a>
+      <a
+        class="navbar-item subtitle is-4"
+        [routerLink]="['/dashboard']"
+        routerLinkActive="router-link-active"
+      >
+        Dashboard
+      </a>
+      <a
+        class="navbar-item subtitle is-4"
+        [routerLink]="['/about']"
+        routerLinkActive="router-link-active"
+      >
+        About
+      </a>
     </div>
 
     <div class="navbar-end">
