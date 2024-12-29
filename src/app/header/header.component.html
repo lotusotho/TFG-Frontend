@@ -49,6 +49,7 @@
         Home
       </a>
       <a
+        *ngIf="isAuthenticated"
         class="navbar-item subtitle is-4"
         [routerLink]="['/dashboard']"
         routerLinkActive="router-link-active"
@@ -56,6 +57,7 @@
         Dashboard
       </a>
       <a
+        *ngIf="isAuthenticated"
         class="navbar-item subtitle is-4"
         [routerLink]="['/preview']"
         routerLinkActive="router-link-active"

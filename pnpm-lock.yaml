@@ -53,6 +53,9 @@ importers:
       marked:
         specifier: 15.0.0
         version: 15.0.0
+      ngx-cookie-service:
+        specifier: ^19.0.0
+        version: 19.0.0(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))
       ngx-markdown:
         specifier: ^19.0.0
         version: 19.0.0(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@18.2.13(@angular/animations@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(marked@15.0.0)(rxjs@7.8.1)(zone.js@0.14.10)
@@ -3643,6 +3646,12 @@ packages:
 
   neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
+
+  ngx-cookie-service@19.0.0:
+    resolution: {integrity: sha512-itxGY1BlIRoEjEtDsSsRKnJuiQteTMLKPNHrykiH06tjUQ1bi3orE7YKU1D210VBqVy1jNrB7hKuGOOIQtQJDA==}
+    peerDependencies:
+      '@angular/common': ^19.0.0
+      '@angular/core': ^19.0.0
 
   ngx-markdown@19.0.0:
     resolution: {integrity: sha512-/UDTYxK2sbG9LjeuPfqErCg9gbT1O64Rnqvs9qgvK70X//gEVCMStNUi1zYIqw/SLRk19Rk48DZMgPiFRbgb1Q==}
@@ -8853,6 +8862,12 @@ snapshots:
 
   neo-async@2.6.2: {}
 
+  ngx-cookie-service@19.0.0(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)):
+    dependencies:
+      '@angular/common': 18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1)
+      '@angular/core': 18.2.13(rxjs@7.8.1)(zone.js@0.14.10)
+      tslib: 2.8.1
+
   ngx-markdown@19.0.0(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@18.2.13(@angular/animations@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(marked@15.0.0)(rxjs@7.8.1)(zone.js@0.14.10):
     dependencies:
       '@angular/common': 18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1)
@@ -9820,6 +9835,8 @@ snapshots:
       bulma: 1.0.2
       express: 4.21.2
       luxon: 3.5.0
+      marked: 15.0.0
+      ngx-markdown: 19.0.0(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@18.2.13(@angular/animations@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(marked@15.0.0)(rxjs@7.8.1)(zone.js@0.14.10)
       rxjs: 7.8.1
       tslib: 2.8.1
       zone.js: 0.14.10
