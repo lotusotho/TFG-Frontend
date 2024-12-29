@@ -1,4 +1,4 @@
 <div class="container is-widescreen">
   <h1 class="title is-1">Preview</h1>
-  <markdown [data]=></markdown>
+  <div class="content" [innerHTML]="userContent | markdown | async"></div>
 </div>

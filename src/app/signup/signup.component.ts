@@ -8,11 +8,12 @@ import {
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [FormsModule, NgIf, ReactiveFormsModule],
+  imports: [FormsModule, NgIf, ReactiveFormsModule, RouterLink],
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
 })
@@ -41,6 +42,7 @@ export class SignupComponent {
         ...this.signupForm.value,
         type: 1,
       };
+
       this.http.post('http://localhost:3000/register', formData).subscribe({
         next: (response) => {
           console.log('Signup successful', response);
