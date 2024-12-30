@@ -9,7 +9,8 @@
         id="text_content"
         class="textarea"
         formControlName="text_content"
-        placeholder="Content text"
+        placeholder="Write something..."
+        [value]="userContent"
         rows="10"
         (input)="markdownContent = formContent.get('text_content')?.value"
       ></textarea>

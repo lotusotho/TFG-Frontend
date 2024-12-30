@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
   formContent: FormGroup;
   username = '';
   markdownContent = '';
+  userContent = 'Initial value';
   text_content: any;
 
   constructor(private http: HttpClient, private fb: FormBuilder) {
@@ -32,6 +33,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.getUsernameByToken();
+    this.getUserContent();
   }
 
   postContent() {
@@ -41,7 +43,7 @@ export class DashboardComponent implements OnInit {
       this.http
         .post(
           'http://localhost:3000/submitcontent',
-          { markdown, text_content: this.text_content },
+          { text_content: this.text_content, md_content: markdown },
           {
             withCredentials: true,
           }
@@ -70,8 +72,31 @@ export class DashboardComponent implements OnInit {
       });
   }
 
+  getUserContent() {
+    this.http
+      .get('http://localhost:3000/usercontent', { withCredentials: true })
+      .subscribe({
+        next: (response: any) => {
+          console.log('Response from server:', response); // Verificar el contenido de la respuesta
+          this.userContent = response.content.md_content;
+          this.markdownContent = this.userContent;
+          this.formContent.patchValue({
+            text_content: this.userContent,
+          });
+          console.log('Converted Markdown:', this.userContent); // Verificar el contenido convertido
+        },
+        error: (error) => {
+          console.error('Error fetching secure data:', error);
+        },
+      });
+  }
+
   convertMarkdownToJson(markdown: string): any {
     const tokens = marked.lexer(markdown);
     return tokens;
+  }
+
+  convertJsonToMarkdown(tokens: any): string {
+    return marked.parser(tokens);
   }
 }

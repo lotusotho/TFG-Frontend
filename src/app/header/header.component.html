@@ -41,29 +41,31 @@
     class="navbar-menu"
   >
     <div class="navbar-start">
-      <a
-        class="navbar-item subtitle is-4"
-        [routerLink]="['/home']"
-        routerLinkActive="router-link-active"
-      >
-        Home
-      </a>
-      <a
-        *ngIf="isAuthenticated"
-        class="navbar-item subtitle is-4"
-        [routerLink]="['/dashboard']"
-        routerLinkActive="router-link-active"
-      >
-        Dashboard
-      </a>
-      <a
-        *ngIf="isAuthenticated"
-        class="navbar-item subtitle is-4"
-        [routerLink]="['/preview']"
-        routerLinkActive="router-link-active"
-      >
-        Preview
-      </a>
+      <ng-template #notAuthenticated>
+        <a
+          class="navbar-item subtitle is-4"
+          [routerLink]="['/home']"
+          routerLinkActive="router-link-active"
+        >
+          Home
+        </a>
+      </ng-template>
+      <div class="navbar" *ngIf="isAuthenticated; else notAuthenticated">
+        <a
+          class="navbar-item subtitle is-4"
+          [routerLink]="['/dashboard']"
+          routerLinkActive="router-link-active"
+        >
+          Dashboard
+        </a>
+        <a
+          class="navbar-item subtitle is-4"
+          [routerLink]="['/preview']"
+          routerLinkActive="router-link-active"
+        >
+          Preview
+        </a>
+      </div>
     </div>
 
     <div class="navbar-end">

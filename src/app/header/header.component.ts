@@ -20,32 +20,29 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent implements OnInit {
-  isAuthenticated: boolean = false; // TODO cambiar api call por cookie
+  isAuthenticated: boolean = false;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
-    private http: HttpClient
+    private http: HttpClient,
+    private cookieService: CookieService
   ) {}
 
   ngOnInit(): void {
-    window.onload = () => {
+    if (isPlatformBrowser(this.platformId)) {
       this.checkAuthToken();
-    };
+    }
   }
 
   checkAuthToken() {
-    this.http
-      .get('http://localhost:3000/islogged', { withCredentials: true })
-      .subscribe({
-        next: (response: any) => {
-          response.message === true
-            ? (this.isAuthenticated = true)
-            : (this.isAuthenticated = false);
-        },
-        error: (error) => {
-          console.error('Error fetching is logged :', error);
-        },
-      });
+    const authToken = this.cookieService.get('authToken');
+    if (authToken) {
+      console.log('Auth token exists:', authToken);
+      this.isAuthenticated = true;
+    } else {
+      console.log('No auth token found');
+      this.isAuthenticated = false;
+    }
   }
 
   @ViewChild('navLogo') navLogo!: ElementRef;
