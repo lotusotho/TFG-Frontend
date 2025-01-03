@@ -46,6 +46,17 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut() {
+    this.http
+      .get('http://localhost:3000/logout', { withCredentials: true })
+      .subscribe({
+        next: (response: any) => {
+          console.log(response.message as string);
+        },
+        error: (error) => {
+          console.error('Error fetching logout data:', error);
+        },
+      });
+
     this.cookieService.delete('authToken');
     window.location.reload();
   }

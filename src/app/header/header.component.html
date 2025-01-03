@@ -1,12 +1,24 @@
 <header class="notice">
   <nav>
-    <button [routerLink]="['/home']" routerLinkActive="router-link-active">
+    <button
+      *ngIf="!isAuthenticated"
+      [routerLink]="['/home']"
+      routerLinkActive="router-link-active"
+    >
       Home
     </button>
-    <button [routerLink]="['/login']" routerLinkActive="router-link-active">
+    <button
+      *ngIf="!isAuthenticated"
+      [routerLink]="['/login']"
+      routerLinkActive="router-link-active"
+    >
       Login
     </button>
-    <button [routerLink]="['/signup']" routerLinkActive="router-link-active">
+    <button
+      *ngIf="!isAuthenticated"
+      [routerLink]="['/signup']"
+      routerLinkActive="router-link-active"
+    >
       Sign Up
     </button>
     <button
