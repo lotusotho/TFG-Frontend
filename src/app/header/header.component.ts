@@ -45,6 +45,11 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  logOut() {
+    this.cookieService.delete('authToken');
+    window.location.reload();
+  }
+
   @ViewChild('navLogo') navLogo!: ElementRef;
   @ViewChild('navBurger') navBurger!: ElementRef;
   @ViewChild('navMenu') navMenu!: ElementRef;
