@@ -41,9 +41,18 @@ importers:
       '@fortawesome/fontawesome-free':
         specifier: ^6.7.2
         version: 6.7.2
+      clipboard:
+        specifier: 2.0.11
+        version: 2.0.11
+      emoji-toolkit:
+        specifier: 9.0.0
+        version: 9.0.0
       express:
         specifier: ^4.18.2
         version: 4.21.2
+      katex:
+        specifier: 0.16.0
+        version: 0.16.0
       luxon:
         specifier: ^3.5.0
         version: 3.5.0
@@ -56,6 +65,9 @@ importers:
       ngx-markdown:
         specifier: ^19.0.0
         version: 19.0.0(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@18.2.13(@angular/animations@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(marked@15.0.0)(rxjs@7.8.1)(zone.js@0.14.10)
+      prismjs:
+        specifier: 1.28.0
+        version: 1.28.0
       rxjs:
         specifier: ~7.8.0
         version: 7.8.1
@@ -2631,8 +2643,8 @@ packages:
   emoji-regex@9.2.2:
     resolution: {integrity: sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==}
 
-  emoji-toolkit@9.0.1:
-    resolution: {integrity: sha512-sMMNqKNLVHXJfIKoPbrRJwtYuysVNC9GlKetr72zE3SSVbHqoeDLWVrxP0uM0AE0qvdl3hbUk+tJhhwXZrDHaw==}
+  emoji-toolkit@9.0.0:
+    resolution: {integrity: sha512-59SKNdBZT3v8bMjkOkBaQqsDuKJK5F2AzRIlGAhAoHAVnhJ51EreKkTkoMAhIp2mOUQDP4CUWqmDV8GGWP1aMw==}
 
   emojis-list@3.0.0:
     resolution: {integrity: sha512-/kyM18EfinwXZbno9FyUGeFh87KC8HRQBQGildHZbEuRyWFOmv1U10o9BBp8XVZDVNNuQKyIGIu5ZYAAXJ0V2Q==}
@@ -3328,6 +3340,10 @@ packages:
     engines: {node: '>= 10'}
     hasBin: true
 
+  katex@0.16.0:
+    resolution: {integrity: sha512-wPRB4iUPysfH97wTgG5/tRLYxmKVq6Q4jRAWRVOUxXB1dsiv4cvcNjqabHkrOvJHM1Bpk3WrgmllSO1vIvP24w==}
+    hasBin: true
+
   katex@0.16.18:
     resolution: {integrity: sha512-LRuk0rPdXrecAFwQucYjMiIs0JFefk6N1q/04mlw14aVIVgxq1FO0MA9RiIIGVaKOB5GIP5GH4aBBNraZERmaQ==}
     hasBin: true
@@ -3961,8 +3977,8 @@ packages:
     resolution: {integrity: sha512-OCVPnIObs4N29kxTjzLfUryOkvZEq+pf8jTF0lg8E7uETuWHA+v7j3c/xJmiqpX450191LlmZfUKkXxkTry7nA==}
     engines: {node: ^10 || ^12 || >=14}
 
-  prismjs@1.29.0:
-    resolution: {integrity: sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==}
+  prismjs@1.28.0:
+    resolution: {integrity: sha512-8aaXdYvl1F7iC7Xm1spqSaY/OJBpYW3v+KJ+F17iYxvdc8sfjW194COK5wVhMZX45tGteiBQgdvD/nhxcRwylw==}
     engines: {node: '>=6'}
 
   proc-log@4.2.0:
@@ -7213,7 +7229,6 @@ snapshots:
       good-listener: 1.2.2
       select: 1.1.2
       tiny-emitter: 2.1.0
-    optional: true
 
   cliui@7.0.4:
     dependencies:
@@ -7248,8 +7263,7 @@ snapshots:
   commander@7.2.0:
     optional: true
 
-  commander@8.3.0:
-    optional: true
+  commander@8.3.0: {}
 
   common-path-prefix@3.0.0: {}
 
@@ -7650,8 +7664,7 @@ snapshots:
       robust-predicates: 3.0.2
     optional: true
 
-  delegate@3.2.0:
-    optional: true
+  delegate@3.2.0: {}
 
   depd@1.1.2: {}
 
@@ -7717,8 +7730,7 @@ snapshots:
 
   emoji-regex@9.2.2: {}
 
-  emoji-toolkit@9.0.1:
-    optional: true
+  emoji-toolkit@9.0.0: {}
 
   emojis-list@3.0.0: {}
 
@@ -8095,7 +8107,6 @@ snapshots:
   good-listener@1.2.2:
     dependencies:
       delegate: 3.2.0
-    optional: true
 
   gopd@1.2.0: {}
 
@@ -8503,6 +8514,10 @@ snapshots:
       - supports-color
       - utf-8-validate
 
+  katex@0.16.0:
+    dependencies:
+      commander: 8.3.0
+
   katex@0.16.18:
     dependencies:
       commander: 8.3.0
@@ -8877,10 +8892,10 @@ snapshots:
       zone.js: 0.14.10
     optionalDependencies:
       clipboard: 2.0.11
-      emoji-toolkit: 9.0.1
-      katex: 0.16.18
+      emoji-toolkit: 9.0.0
+      katex: 0.16.0
       mermaid: 11.4.1
-      prismjs: 1.29.0
+      prismjs: 1.28.0
     transitivePeerDependencies:
       - supports-color
 
@@ -9219,8 +9234,7 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  prismjs@1.29.0:
-    optional: true
+  prismjs@1.28.0: {}
 
   proc-log@4.2.0: {}
 
@@ -9487,8 +9501,7 @@ snapshots:
 
   select-hose@2.0.0: {}
 
-  select@1.1.2:
-    optional: true
+  select@1.1.2: {}
 
   selfsigned@2.4.1:
     dependencies:
@@ -9830,13 +9843,17 @@ snapshots:
       '@angular/router': 18.2.13(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@18.2.13(@angular/animations@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(rxjs@7.8.1)
       '@angular/ssr': 18.2.12(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))
       '@fortawesome/fontawesome-free': 6.7.2
+      emoji-toolkit: 9.0.0
       express: 4.21.2
+      katex: 0.16.0
       luxon: 3.5.0
       marked: 15.0.0
       ngx-cookie-service: 19.0.0(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))
       ngx-markdown: 19.0.0(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@18.2.13(@angular/animations@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(marked@15.0.0)(rxjs@7.8.1)(zone.js@0.14.10)
+      prismjs: 1.28.0
       rxjs: 7.8.1
       tslib: 2.8.1
+      water.css: 2.1.1
       zone.js: 0.14.10
     transitivePeerDependencies:
       - supports-color
@@ -9847,8 +9864,7 @@ snapshots:
 
   thunky@1.1.0: {}
 
-  tiny-emitter@2.1.0:
-    optional: true
+  tiny-emitter@2.1.0: {}
 
   tinyexec@0.3.1:
     optional: true

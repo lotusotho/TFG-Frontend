@@ -41,6 +41,7 @@ export class LoginComponent {
         .subscribe({
           next: (response: any) => {
             console.log('Login successful', response);
+            window.location.reload();
           },
           error: (error) => {
             console.error('Login failed', error);

@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MarkdownComponent, MarkdownService } from 'ngx-markdown';
-import { marked, Marked } from 'marked';
 import { MarkdownPipe, LanguagePipe } from 'ngx-markdown';
 
 @Component({
@@ -29,17 +28,13 @@ export class PreviewComponent {
       .subscribe({
         next: (response: any) => {
           console.log('Response from server:', response); // Verificar el contenido de la respuesta
-          const tokensDB = response.content.text_content;
-          this.userContent = this.convertJsonToMarkdown(tokensDB);
+          const mdDB = response.content.md_content;
+          this.userContent = mdDB;
           console.log('Converted Markdown:', this.userContent); // Verificar el contenido convertido
         },
         error: (error) => {
           console.error('Error fetching secure data:', error);
         },
       });
-  }
-
-  convertJsonToMarkdown(tokens: any): string {
-    return marked.parser(tokens);
   }
 }

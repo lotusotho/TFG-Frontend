@@ -1,24 +1,11 @@
-<div class="container is-widescreen">
-  <form [formGroup]="signupForm">
-    <label class="label">Username</label>
+<form [formGroup]="signupForm">
+  <div class="centered-content">
+    <h2>Username:</h2>
     <input
-      class="input"
       type="username"
       formControlName="username"
       placeholder="Username input"
     />
-    <span class="icon is-small is-left">
-      <i class="fas fa-user"></i>
-    </span>
-    <span
-      class="icon is-small is-right"
-      *ngIf="
-        signupForm.get('username')?.invalid &&
-        signupForm.get('username')?.touched
-      "
-    >
-      <i class="fas fa-exclamation-triangle"></i>
-    </span>
     <p
       class="help is-danger"
       *ngIf="
@@ -29,24 +16,8 @@
       Please enter a valid username.
     </p>
 
-    <label class="label">Email</label>
-    <input
-      class="input"
-      type="email"
-      formControlName="email"
-      placeholder="Email input"
-    />
-    <span class="icon is-small is-left">
-      <i class="fas fa-envelope"></i>
-    </span>
-    <span
-      class="icon is-small is-right"
-      *ngIf="
-        signupForm.get('email')?.invalid && signupForm.get('email')?.touched
-      "
-    >
-      <i class="fas fa-exclamation-triangle"></i>
-    </span>
+    <h2>Email:</h2>
+    <input type="email" formControlName="email" placeholder="Email input" />
     <p
       class="help is-danger"
       *ngIf="
@@ -56,24 +27,12 @@
       Please enter a valid email.
     </p>
 
-    <label>Password</label>
+    <h2>Password:</h2>
     <input
-      class="input"
       type="password"
       formControlName="password"
       placeholder="Password input"
     />
-    <span class="icon is-small is-left">
-      <i class="fas fa-lock"></i>
-    </span>
-    <span
-      *ngIf="
-        signupForm.get('password')?.invalid &&
-        signupForm.get('password')?.touched
-      "
-    >
-      <i class="fas fa-exclamation-triangle"></i>
-    </span>
     <p
       class="help is-danger"
       *ngIf="
@@ -83,17 +42,17 @@
     >
       Password must be at least 6 characters.
     </p>
+  </div>
 
-    <button
-      (click)="onSubmit()"
-      class="button is-link"
-      type="submit"
-      [disabled]="signupForm.invalid"
-      [routerLink]="['/login']"
-      routerLinkActive="router-link-active"
-    >
-      Register
-    </button>
-    <button class="button" type="reset">Cancel</button>
-  </form>
-</div>
+  <button
+    (click)="onSubmit()"
+    class="button is-link"
+    type="submit"
+    [disabled]="signupForm.invalid"
+    [routerLink]="['/login']"
+    routerLinkActive="router-link-active"
+  >
+    Register
+  </button>
+  <button class="button" type="reset">Cancel</button>
+</form>
