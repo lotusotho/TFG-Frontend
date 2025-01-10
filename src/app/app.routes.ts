@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component.js';
 import { DashboardComponent } from './dashboard/dashboard.component.js';
 import { PreviewComponent } from './preview/preview.component.js';
 import { NgModule } from '@angular/core';
+import { MdinfoComponent } from './mdinfo/mdinfo.component.js';
 
 export const routes: Routes = [
   {
@@ -31,6 +32,10 @@ export const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent,
+      },
+      {
+        path: 'mdinfo',
+        component: MdinfoComponent,
       },
     ],
   },

@@ -1,10 +1,133 @@
-<markdown
-  [start]="5"
-  lineHighlight
-  commandLine
-  [user]="'Foo'"
-  [host]="'Bar'"
-  katex
-  clipboard
-  [src]="'assets/md/home.component.md'"
-></markdown>
+<section class="hero is-light is-large">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <p class="title">
+        🦝 Bienvenido a Mapach.es – Tu miniblog minimalista en Markdown
+      </p>
+      <p class="subtitle">
+        Exprésate de manera sencilla y rápida con tu propio miniblog.
+        <br />
+        Crea publicaciones usando solo <strong>Markdown</strong> y obtén un
+        subdominio exclusivo basado en tu nombre de usuario:
+        <br />
+        <br />
+        <code class="title is-3 has-text-danger">
+          <ngx-typed-writer
+            class="typewriter has-text-info"
+            [strings]="usernames"
+            [shuffle]="true"
+            [isHTML]="true"
+            [backSpeed]="20"
+            [typeSpeed]="40"
+          >
+          </ngx-typed-writer
+          >.mapach.es
+        </code>
+      </p>
+    </div>
+  </div>
+</section>
+<hr />
+<section class="section">
+  <div class="container">
+    <h2 class="title is-4 has-text-centered">🚀 ¿Por qué Mapach.es?</h2>
+    <ul class="has-text-centered">
+      <li>
+        <strong>Markdown-friendly</strong>: Publica contenido de manera rápida y
+        sin complicaciones.
+      </li>
+      <li>
+        <strong>Subdominio único</strong>: Tu nombre de usuario será tu
+        dirección, ejemplo: <code>alejandro.mapach.es</code>
+      </li>
+      <li>
+        <strong>Velocidad extrema</strong>: Nuestro sistema está optimizado para
+        cargar tus publicaciones casi instantáneamente.
+      </li>
+      <li>
+        <strong>CSS minimalista</strong>: Un diseño limpio, simple y eficiente
+        que resalta tu contenido.
+      </li>
+      <li>
+        <strong>Sin anuncios</strong>: Tu miniblog estará libre de distracciones
+        publicitarias.
+      </li>
+      <li>
+        <strong>100% gratuito</strong>: Sin costos ni suscripciones, publica lo
+        que quieras cuando quieras.
+      </li>
+    </ul>
+  </div>
+</section>
+<hr />
+<section class="section">
+  <div class="container">
+    <h2 class="title is-4 has-text-centered">✏️ ¿Cómo empezar?</h2>
+    <ul class="has-text-centered">
+      <li>
+        <strong>Regístrate</strong> con tu nombre de usuario.
+        <em
+          >(Ejemplo: Si tu nombre de usuario es <code>alejandro</code>, tu
+          miniblog será <code>alejandro.mapach.es</code>).</em
+        >
+      </li>
+      <li>
+        <strong>Escribe tus publicaciones</strong> usando nuestro editor
+        intuitivo en Markdown.
+      </li>
+      <li><strong>Publica y comparte</strong> con un solo clic.</li>
+    </ul>
+  </div>
+</section>
+<hr />
+<section class="section">
+  <div class="container">
+    <h2 class="title is-4 has-text-centered">🌟 Características principales</h2>
+    <ul class="has-text-centered">
+      <li>
+        <strong>Formato en Markdown</strong>: Sin necesidad de aprender HTML,
+        solo enfócate en el contenido.
+      </li>
+      <li>
+        <strong>Resaltado de código</strong>: Perfecto para desarrolladores que
+        quieren compartir snippets de código.
+      </li>
+      <li>
+        <strong>Soporte para multimedia</strong>: Añade imágenes, enlaces e
+        incluso fórmulas matemáticas con LaTeX.
+      </li>
+      <li>
+        <strong>Comentarios opcionales</strong>: Habilítalos o desactívalos
+        según prefieras.
+      </li>
+      <li>
+        <strong>Modo oscuro</strong>: Interfaz adaptable para una mejor
+        experiencia de lectura.
+      </li>
+      <li>
+        <strong>Velocidad y minimalismo</strong>: Carga rápida y un diseño
+        ligero que prioriza el contenido.
+      </li>
+    </ul>
+  </div>
+</section>
+<hr />
+<section class="section">
+  <div class="container">
+    <h2 class="title is-4 has-text-centered">🖋️ Ejemplo de publicación</h2>
+    <pre><code class="language-markdown"># Bienvenidos a mi miniblog
+
+Hola a todos, este es mi primer post en <strong>Mapach.es</strong>.  
+Quiero compartir ideas sobre tecnología, diseño y desarrollo web.
+</code></pre>
+    <pre><code class="language-javascript">// Ejemplo de código en JavaScript
+console.log("Hola desde Mapach.es");
+</code></pre>
+    <p>
+      También puedes usar LaTeX para escribir fórmulas matemáticas: La ecuación
+      cuadrática se expresa como:
+    </p>
+    <pre><code class="language-latex">$$ ax^2 + bx + c = 0 $$</code></pre>
+    <p class="has-text-centered"><em>(ax^2 + bx + c = 0)</em></p>
+  </div>
+</section>

@@ -1,47 +1,94 @@
-<form [formGroup]="loginForm">
-  <div class="centered-content">
-    <h2>Username:</h2>
-    <input
-      class="input"
-      type="text"
-      formControlName="username"
-      placeholder="Username input"
-    />
-    <p
-      class="help is-danger"
-      *ngIf="
-        loginForm.get('username')?.invalid && loginForm.get('username')?.touched
-      "
-    >
-      Please enter a valid username.
-    </p>
+<div class="container is-widescreen p-5">
+  <form [formGroup]="loginForm">
+    <div class="field">
+      <label class="label">Username</label>
+      <div class="control has-icons-left has-icons-right">
+        <input
+          class="input"
+          type="text"
+          formControlName="username"
+          placeholder="Username input"
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-envelope"></i>
+        </span>
+        <span
+          class="icon is-small is-right"
+          *ngIf="
+            loginForm.get('username')?.invalid &&
+            loginForm.get('username')?.touched
+          "
+        >
+          <i class="fas fa-exclamation-triangle"></i>
+        </span>
+        <p
+          class="help is-danger"
+          *ngIf="
+            loginForm.get('username')?.invalid &&
+            loginForm.get('username')?.touched
+          "
+        >
+          Please enter a valid username.
+        </p>
+      </div>
+    </div>
 
-    <h2>Password:</h2>
-    <input
-      class="input"
-      type="password"
-      formControlName="password"
-      placeholder="Password input"
-    />
-    <p
-      class="help is-danger"
-      *ngIf="
-        loginForm.get('password')?.invalid && loginForm.get('password')?.touched
-      "
-    >
-      Password must be at least 5 characters.
-    </p>
-  </div>
-  <button
-    (click)="onSubmit()"
-    [routerLink]="['/home']"
-    routerLinkActive="router-link-active"
-    class="button is-link"
-    type="submit"
-    [disabled]="loginForm.invalid"
-  >
-    Login
-  </button>
+    <div class="field">
+      <label class="label">Password</label>
+      <div class="control has-icons-left has-icons-right">
+        <input
+          class="input"
+          type="password"
+          formControlName="password"
+          placeholder="Password input"
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
+        <span
+          class="icon is-small is-right"
+          *ngIf="
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.touched
+          "
+        >
+          <i class="fas fa-exclamation-triangle"></i>
+        </span>
+        <p
+          class="help is-danger"
+          *ngIf="
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.touched
+          "
+        >
+          Password must be at least 5 characters.
+        </p>
+      </div>
+    </div>
 
-  <button type="reset">Cancel</button>
-</form>
+    <div class="field is-grouped m-1">
+      <div class="control">
+        <button
+          (click)="onSubmit()"
+          [routerLink]="['/home']"
+          routerLinkActive="router-link-active"
+          class="button is-link"
+          type="submit"
+          [disabled]="loginForm.invalid"
+        >
+          Login
+        </button>
+      </div>
+      <div class="control">
+        <button
+          class="button is-link is-light"
+          type="reset"
+          [routerLink]="['/home']"
+          routerLinkActive="router-link-active"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,58 +1,125 @@
-<form [formGroup]="signupForm">
-  <div class="centered-content">
-    <h2>Username:</h2>
-    <input
-      type="username"
-      formControlName="username"
-      placeholder="Username input"
-    />
-    <p
-      class="help is-danger"
-      *ngIf="
-        signupForm.get('username')?.invalid &&
-        signupForm.get('username')?.touched
-      "
-    >
-      Please enter a valid username.
-    </p>
+<div class="container is-widescreen p-5">
+  <form [formGroup]="signupForm">
+    <div class="field">
+      <label class="label">Username</label>
+      <div class="control has-icons-left has-icons-right">
+        <input
+          class="input"
+          type="username"
+          formControlName="username"
+          placeholder="Username input"
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-user"></i>
+        </span>
+        <span
+          class="icon is-small is-right"
+          *ngIf="
+            signupForm.get('username')?.invalid &&
+            signupForm.get('username')?.touched
+          "
+        >
+          <i class="fas fa-exclamation-triangle"></i>
+        </span>
+        <p
+          class="help is-danger"
+          *ngIf="
+            signupForm.get('username')?.invalid &&
+            signupForm.get('username')?.touched
+          "
+        >
+          Please enter a valid username.
+        </p>
+      </div>
+    </div>
 
-    <h2>Email:</h2>
-    <input type="email" formControlName="email" placeholder="Email input" />
-    <p
-      class="help is-danger"
-      *ngIf="
-        signupForm.get('email')?.invalid && signupForm.get('email')?.touched
-      "
-    >
-      Please enter a valid email.
-    </p>
+    <div class="field">
+      <label class="label">Email</label>
+      <div class="control has-icons-left has-icons-right">
+        <input
+          class="input"
+          type="email"
+          formControlName="email"
+          placeholder="Email input"
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-envelope"></i>
+        </span>
+        <span
+          class="icon is-small is-right"
+          *ngIf="
+            signupForm.get('email')?.invalid && signupForm.get('email')?.touched
+          "
+        >
+          <i class="fas fa-exclamation-triangle"></i>
+        </span>
+        <p
+          class="help is-danger"
+          *ngIf="
+            signupForm.get('email')?.invalid && signupForm.get('email')?.touched
+          "
+        >
+          Please enter a valid email.
+        </p>
+      </div>
+    </div>
 
-    <h2>Password:</h2>
-    <input
-      type="password"
-      formControlName="password"
-      placeholder="Password input"
-    />
-    <p
-      class="help is-danger"
-      *ngIf="
-        signupForm.get('password')?.invalid &&
-        signupForm.get('password')?.touched
-      "
-    >
-      Password must be at least 6 characters.
-    </p>
-  </div>
+    <div class="field">
+      <label class="label">Password</label>
+      <div class="control has-icons-left has-icons-right">
+        <input
+          class="input"
+          type="password"
+          formControlName="password"
+          placeholder="Password input"
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
+        <span
+          class="icon is-small is-right"
+          *ngIf="
+            signupForm.get('password')?.invalid &&
+            signupForm.get('password')?.touched
+          "
+        >
+          <i class="fas fa-exclamation-triangle"></i>
+        </span>
+        <p
+          class="help is-danger"
+          *ngIf="
+            signupForm.get('password')?.invalid &&
+            signupForm.get('password')?.touched
+          "
+        >
+          Password must be at least 6 characters.
+        </p>
+      </div>
+    </div>
 
-  <button
-    (click)="onSubmit()"
-    class="button is-link"
-    type="submit"
-    [disabled]="signupForm.invalid"
-    [routerLink]="['/login']"
-    routerLinkActive="router-link-active"
-  >
-    Register
-  </button>
-  <button class="button" type="reset">Cancel</button>
-</form>
+    <div class="field is-grouped m-1">
+      <div class="control">
+        <button
+          (click)="onSubmit()"
+          class="button is-link"
+          type="submit"
+          [disabled]="signupForm.invalid"
+          [routerLink]="['/login']"
+          routerLinkActive="router-link-active"
+        >
+          Register
+        </button>
+      </div>
+      <div class="control">
+        <button
+          class="button is-link is-light"
+          type="reset"
+          [routerLink]="['/home']"
+          routerLinkActive="router-link-active"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

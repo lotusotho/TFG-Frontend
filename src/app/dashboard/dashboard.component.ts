@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { MarkdownModule, MarkdownService } from 'ngx-markdown';
 import { marked } from 'marked';
+import { MdinfoComponent } from '../mdinfo/mdinfo.component.js';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,6 +25,14 @@ export class DashboardComponent implements OnInit {
   markdownContent = '';
   userContent = 'Initial value';
   text_content: any;
+  current_phrase: string = '';
+
+  phrases: string[] = [
+    '¿Qué se te ocurre hoy?',
+    '¡Escribe algo interesante!',
+    '¡Hora de escribir!',
+    'Buenos días, ',
+  ];
 
   constructor(private http: HttpClient, private fb: FormBuilder) {
     this.formContent = this.fb.group({
@@ -34,6 +43,12 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.getUsernameByToken();
     this.getUserContent();
+    this.choosePhrase();
+  }
+
+  choosePhrase() {
+    this.current_phrase =
+      this.phrases[Math.floor(Math.random() * this.phrases.length)];
   }
 
   postContent() {

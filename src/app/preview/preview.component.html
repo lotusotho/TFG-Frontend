@@ -1,4 +1,8 @@
-<div class="centered-content">
-  <h1>Preview:</h1>
-  <div [innerHTML]="userContent | markdown | async"></div>
+<div class="container p-5">
+  <p class="title">Modo vista previa:</p>
+  <hr />
+  <div
+    class="has-text-centered"
+    [innerHTML]="userContent | markdown | async"
+  ></div>
 </div>

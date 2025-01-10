@@ -1,7 +1,9 @@
 <div class="container is-widescreen">
   <h1 class="title is-1">
-    Your blog, {{ username.charAt(0).toUpperCase() }}{{ username.slice(1) }}:
+    {{ current_phrase }} {{ username.charAt(0).toUpperCase()
+    }}{{ username.slice(1) }}:
   </h1>
+  <p class="subtitle"></p>
   <form [formGroup]="formContent">
     <div class="field">
       <textarea
@@ -23,8 +25,10 @@
       Subir
     </button>
   </form>
-  <!-- <div class="preview">
-    <h2 class="title is-2">Preview</h2>
+  <hr />
+  <div class="preview container p-5 has-text-centered">
+    <p class="title is-2">Modo vista previa:</p>
+    <hr />
     <div class="content"><markdown [data]="markdownContent"></markdown></div>
-  </div> -->
+  </div>
 </div>
