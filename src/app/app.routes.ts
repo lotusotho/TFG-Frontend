@@ -11,6 +11,11 @@ import { MdinfoComponent } from './mdinfo/mdinfo.component.js';
 export const routes: Routes = [
   {
     path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
+  {
+    path: '',
     component: HeaderComponent,
     children: [
       {

@@ -34,8 +34,13 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  reloadPage() {
+    window.location.reload();
+  }
+
   checkAuthToken() {
     const authToken = this.cookieService.get('authToken');
+
     if (authToken) {
       console.log('Auth token exists:', authToken);
       this.isAuthenticated = true;
@@ -58,7 +63,7 @@ export class HeaderComponent implements OnInit {
       });
 
     this.cookieService.delete('authToken');
-    window.location.reload();
+    this.reloadPage();
   }
 
   @ViewChild('navLogo') navLogo!: ElementRef;
