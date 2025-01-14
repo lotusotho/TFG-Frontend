@@ -30,14 +30,14 @@
               }
             ],
             "styles": [
-              "src/styles.css",
               "node_modules/bulma/css/bulma.min.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
               "node_modules/prismjs/themes/prism-okaidia.css",
               "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css",
               "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css",
               "node_modules/prismjs/plugins/command-line/prism-command-line.css",
-              "node_modules/katex/dist/katex.min.css"
+              "node_modules/katex/dist/katex.min.css",
+              "src/styles.css"
             ],
             "scripts": [
               "node_modules/prismjs/prism.js",
@@ -111,9 +111,9 @@
               }
             ],
             "styles": [
-              "src/styles.css",
               "node_modules/bulma/css/bulma.min.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.css"
+              "node_modules/@fortawesome/fontawesome-free/css/all.css",
+              "src/styles.css"
             ],
             "scripts": []
           }
