@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from '../auth.service.js';
 
 @Component({
   selector: 'app-header',
@@ -25,29 +26,19 @@ export class HeaderComponent implements OnInit {
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
     private http: HttpClient,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
+    // TODO: Arreglar esto
     if (isPlatformBrowser(this.platformId)) {
-      this.checkAuthToken();
+      this.authService.login();
     }
-  }
 
-  reloadPage() {
-    window.location.reload();
-  }
-
-  checkAuthToken() {
-    const authToken = this.cookieService.get('authToken');
-
-    if (authToken) {
-      console.log('Auth token exists:', authToken);
-      this.isAuthenticated = true;
-    } else {
-      console.log('No auth token found');
-      this.isAuthenticated = false;
-    }
+    this.authService.isLoggedIn$.subscribe((status) => {
+      this.isAuthenticated = status;
+    });
   }
 
   logOut() {
@@ -56,6 +47,7 @@ export class HeaderComponent implements OnInit {
       .subscribe({
         next: (response: any) => {
           console.log(response.message as string);
+          this.authService.logout();
         },
         error: (error) => {
           console.error('Error fetching logout data:', error);
@@ -63,7 +55,6 @@ export class HeaderComponent implements OnInit {
       });
 
     this.cookieService.delete('authToken');
-    this.reloadPage();
   }
 
   @ViewChild('navLogo') navLogo!: ElementRef;

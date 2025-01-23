@@ -45,14 +45,6 @@
         >
           Dashboard
         </a>
-        <a
-          *ngIf="isAuthenticated"
-          class="navbar-item"
-          [routerLink]="['/preview']"
-          routerLinkActive="router-link-active"
-        >
-          Preview
-        </a>
       </div>
 
       <div class="navbar-end">
@@ -60,7 +52,7 @@
           <div class="buttons">
             <a
               *ngIf="isAuthenticated"
-              class="navbar-item"
+              class="navbar-item button"
               [routerLink]="['/mdinfo']"
               routerLinkActive="router-link-active"
             >

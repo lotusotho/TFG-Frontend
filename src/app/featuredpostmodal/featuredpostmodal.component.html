@@ -1,0 +1,14 @@
+<div *ngFor="let post of featuredPosts; let i = index">
+  <div [attr.id]="'modalId' + i" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">{{ post.title }}</p>
+        <button class="delete" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body">
+        <p class="subtitle">{{ post.description }}</p>
+      </section>
+    </div>
+  </div>
+</div>

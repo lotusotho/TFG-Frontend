@@ -9,7 +9,7 @@ import {
 } from '@angular/forms';
 import { MarkdownModule, MarkdownService } from 'ngx-markdown';
 import { marked } from 'marked';
-import { MdinfoComponent } from '../mdinfo/mdinfo.component.js';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -34,7 +34,11 @@ export class DashboardComponent implements OnInit {
     'Buenos días, ',
   ];
 
-  constructor(private http: HttpClient, private fb: FormBuilder) {
+  constructor(
+    private http: HttpClient,
+    private fb: FormBuilder,
+    private router: Router
+  ) {
     this.formContent = this.fb.group({
       text_content: ['', [Validators.required, Validators.minLength(5)]],
     });
@@ -53,7 +57,7 @@ export class DashboardComponent implements OnInit {
 
   postContent() {
     if (this.formContent.valid) {
-      const markdown = this.formContent.value.text_content;
+      const markdown = this.formContent.value['text_content'];
       this.text_content = this.convertMarkdownToJson(markdown);
       this.http
         .post(
@@ -71,6 +75,7 @@ export class DashboardComponent implements OnInit {
             console.error('Error posting content:', error);
           },
         });
+      this.router.navigate(['/preview']);
     }
   }
 

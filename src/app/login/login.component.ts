@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../auth.service.js';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,11 @@ import { RouterLink } from '@angular/router';
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private authService: AuthService
+  ) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(5)]],
       password: ['', [Validators.required, Validators.minLength(5)]],
@@ -41,7 +46,7 @@ export class LoginComponent {
         .subscribe({
           next: (response: any) => {
             console.log('Login successful', response);
-            window.location.reload();
+            this.authService.login();
           },
           error: (error) => {
             console.error('Login failed', error);

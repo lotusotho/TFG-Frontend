@@ -3,11 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { MarkdownModule } from 'ngx-markdown';
 import { NgxTypedWriterModule } from 'ngx-typed-writer';
 import { faker } from '@faker-js/faker';
+import { FeaturedpostComponent } from '../featuredpost/featuredpost.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MarkdownModule, NgxTypedWriterModule],
+  imports: [MarkdownModule, NgxTypedWriterModule, FeaturedpostComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   preserveWhitespaces: true,

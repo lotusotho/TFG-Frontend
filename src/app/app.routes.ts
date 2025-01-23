@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component.js';
 import { PreviewComponent } from './preview/preview.component.js';
 import { NgModule } from '@angular/core';
 import { MdinfoComponent } from './mdinfo/mdinfo.component.js';
+import { FooterComponent } from './footer/footer.component.js';
 
 export const routes: Routes = [
   {
@@ -43,5 +44,10 @@ export const routes: Routes = [
         component: MdinfoComponent,
       },
     ],
+  },
+  {
+    path: '',
+    component: FooterComponent,
+    outlet: 'FooterOutlet',
   },
 ];

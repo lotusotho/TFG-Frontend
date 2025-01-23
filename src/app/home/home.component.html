@@ -2,7 +2,7 @@
   <div class="hero-body">
     <div class="container has-text-centered">
       <p class="title">
-        🦝 Bienvenido a Mapach.es – Tu miniblog minimalista en Markdown
+        🦝 Bienvenido a Mapach.es – Tu miniblog minimalista en Markdown 🦝
       </p>
       <p class="subtitle">
         Exprésate de manera sencilla y rápida con tu propio miniblog.
@@ -13,7 +13,7 @@
         <br />
         <code class="title is-3 has-text-danger">
           <ngx-typed-writer
-            class="typewriter has-text-info"
+            class="typewriter has-text-light"
             [strings]="usernames"
             [shuffle]="true"
             [isHTML]="true"
@@ -24,6 +24,7 @@
           >.mapach.es
         </code>
       </p>
+      <a class="title is-4 button is-primary m-4">Crear Nuevo Post</a>
     </div>
   </div>
 </section>
@@ -60,7 +61,7 @@
   </div>
 </section>
 <hr />
-<section class="section">
+<section class="section" data-aos="fade-up">
   <div class="container">
     <h2 class="title is-4 has-text-centered">✏️ ¿Cómo empezar?</h2>
     <ul class="has-text-centered">
@@ -80,7 +81,7 @@
   </div>
 </section>
 <hr />
-<section class="section">
+<section class="section" data-aos="fade-up">
   <div class="container">
     <h2 class="title is-4 has-text-centered">🌟 Características principales</h2>
     <ul class="has-text-centered">
@@ -112,17 +113,17 @@
   </div>
 </section>
 <hr />
-<section class="section">
+<section class="section" data-aos="fade-up">
   <div class="container">
     <h2 class="title is-4 has-text-centered">🖋️ Ejemplo de publicación</h2>
     <pre><code class="language-markdown"># Bienvenidos a mi miniblog
-
-Hola a todos, este es mi primer post en <strong>Mapach.es</strong>.  
-Quiero compartir ideas sobre tecnología, diseño y desarrollo web.
-</code></pre>
+    
+    Hola a todos, este es mi primer post en <strong>Mapach.es</strong>.  
+    Quiero compartir ideas sobre tecnología, diseño y desarrollo web.
+    </code></pre>
     <pre><code class="language-javascript">// Ejemplo de código en JavaScript
-console.log("Hola desde Mapach.es");
-</code></pre>
+    console.log("Hola desde Mapach.es");
+    </code></pre>
     <p>
       También puedes usar LaTeX para escribir fórmulas matemáticas: La ecuación
       cuadrática se expresa como:
@@ -131,3 +132,4 @@ console.log("Hola desde Mapach.es");
     <p class="has-text-centered"><em>(ax^2 + bx + c = 0)</em></p>
   </div>
 </section>
+<app-featuredpost></app-featuredpost>
