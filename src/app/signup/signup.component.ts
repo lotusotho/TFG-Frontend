@@ -43,14 +43,16 @@ export class SignupComponent {
         type: 1,
       };
 
-      this.http.post('http://localhost:3000/register', formData).subscribe({
-        next: (response) => {
-          console.log('Signup successful', response);
-        },
-        error: (error) => {
-          console.error('Signup failed', error);
-        },
-      });
+      this.http
+        .post('https://apiblogmapaches.onrender.com/register', formData)
+        .subscribe({
+          next: (response) => {
+            console.log('Signup successful', response);
+          },
+          error: (error) => {
+            console.error('Signup failed', error);
+          },
+        });
     }
   }
 }

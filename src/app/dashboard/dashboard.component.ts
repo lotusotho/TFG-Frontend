@@ -61,7 +61,7 @@ export class DashboardComponent implements OnInit {
       this.text_content = this.convertMarkdownToJson(markdown);
       this.http
         .post(
-          'http://localhost:3000/submitcontent',
+          'https://apiblogmapaches.onrender.com/submitcontent',
           { text_content: this.text_content, md_content: markdown },
           {
             withCredentials: true,
@@ -81,7 +81,9 @@ export class DashboardComponent implements OnInit {
 
   getUsernameByToken() {
     this.http
-      .get('http://localhost:3000/tokenusername', { withCredentials: true })
+      .get('https://apiblogmapaches.onrender.com/tokenusername', {
+        withCredentials: true,
+      })
       .subscribe({
         next: (response: any) => {
           this.username = response.username as string;
@@ -94,7 +96,9 @@ export class DashboardComponent implements OnInit {
 
   getUserContent() {
     this.http
-      .get('http://localhost:3000/usercontent', { withCredentials: true })
+      .get('https://apiblogmapaches.onrender.com/usercontent', {
+        withCredentials: true,
+      })
       .subscribe({
         next: (response: any) => {
           console.log('Response from server:', response); // Verificar el contenido de la respuesta

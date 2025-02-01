@@ -21,7 +21,9 @@ export class PreviewComponent {
 
   getUserContent() {
     this.http
-      .get('http://localhost:3000/usercontent', { withCredentials: true })
+      .get('https://apiblogmapaches.onrender.com/usercontent', {
+        withCredentials: true,
+      })
       .subscribe({
         next: (response: any) => {
           console.log('Response from server:', response); // Verificar el contenido de la respuesta
