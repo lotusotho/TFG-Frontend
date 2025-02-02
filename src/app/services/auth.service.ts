@@ -30,7 +30,7 @@ export class AuthService {
           if (response.authToken) {
             this.cookieService.set('authToken', response.authToken, {
               expires: 1 / 24,
-              domain: 'blog.mapach.es',
+              domain: '.mapach.es',
               secure: true,
               sameSite: 'Lax',
             });
