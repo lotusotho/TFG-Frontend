@@ -5,11 +5,10 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { AuthService } from '../auth.service.js';
+import { AuthService } from '../services/auth.service.js';
 
 @Component({
   selector: 'app-login',
@@ -21,11 +20,7 @@ import { AuthService } from '../auth.service.js';
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(
-    private fb: FormBuilder,
-    private http: HttpClient,
-    private authService: AuthService
-  ) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(5)]],
       password: ['', [Validators.required, Validators.minLength(5)]],
@@ -39,19 +34,10 @@ export class LoginComponent {
       const formData = {
         ...this.loginForm.value,
       };
-      this.http
-        .post('https://apiblogmapaches.onrender.com/login', formData, {
-          withCredentials: true,
-        })
-        .subscribe({
-          next: (response: any) => {
-            console.log('Login successful', response);
-            this.authService.login();
-          },
-          error: (error) => {
-            console.error('Login failed', error);
-          },
-        });
+      this.authService.login({
+        username: this.loginForm.value['username'],
+        password: this.loginForm.value['password'],
+      });
     } else {
       console.log('Form is invalid');
     }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { MarkdownModule } from 'ngx-markdown';
 import { NgxTypedWriterModule } from 'ngx-typed-writer';
 import { faker } from '@faker-js/faker';
@@ -16,7 +15,7 @@ import { FeaturedpostComponent } from '../featuredpost/featuredpost.component';
 export class HomeComponent implements OnInit {
   usernames: string[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
   ngOnInit(): void {
     for (let i = 0; i < 10; i++) {

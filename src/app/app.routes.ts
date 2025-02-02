@@ -8,6 +8,7 @@ import { PreviewComponent } from './preview/preview.component.js';
 import { NgModule } from '@angular/core';
 import { MdinfoComponent } from './mdinfo/mdinfo.component.js';
 import { FooterComponent } from './footer/footer.component.js';
+import { AuthGuard } from './guards/auth.guard.js';
 
 export const routes: Routes = [
   {
@@ -26,10 +27,12 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'preview',
         component: PreviewComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'signup',

@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -10,6 +9,7 @@ import {
 import { MarkdownModule, MarkdownService } from 'ngx-markdown';
 import { marked } from 'marked';
 import { Router } from '@angular/router';
+import { ContentService } from '../services/content.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -35,9 +35,9 @@ export class DashboardComponent implements OnInit {
   ];
 
   constructor(
-    private http: HttpClient,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private contentService: ContentService
   ) {
     this.formContent = this.fb.group({
       text_content: ['', [Validators.required, Validators.minLength(5)]],
@@ -59,60 +59,44 @@ export class DashboardComponent implements OnInit {
     if (this.formContent.valid) {
       const markdown = this.formContent.value['text_content'];
       this.text_content = this.convertMarkdownToJson(markdown);
-      this.http
-        .post(
-          'https://apiblogmapaches.onrender.com/submitcontent',
-          { text_content: this.text_content, md_content: markdown },
-          {
-            withCredentials: true,
-          }
-        )
-        .subscribe({
-          next: (response: any) => {
-            console.log('Content posted', response);
-          },
-          error: (error) => {
-            console.error('Error posting content:', error);
-          },
-        });
+      this.contentService.postContent(this.text_content, markdown).subscribe({
+        next: (response: any) => {
+          console.log('Content posted', response);
+        },
+        error: (error) => {
+          console.error('Error posting content:', error);
+        },
+      });
       this.router.navigate(['/preview']);
     }
   }
 
   getUsernameByToken() {
-    this.http
-      .get('https://apiblogmapaches.onrender.com/tokenusername', {
-        withCredentials: true,
-      })
-      .subscribe({
-        next: (response: any) => {
-          this.username = response.username as string;
-        },
-        error: (error) => {
-          console.error('Error fetching secure data:', error);
-        },
-      });
+    this.contentService.getUsernameByToken().subscribe({
+      next: (response: any) => {
+        this.username = response.username as string;
+      },
+      error: (error) => {
+        console.error('Error fetching secure data:', error);
+      },
+    });
   }
 
   getUserContent() {
-    this.http
-      .get('https://apiblogmapaches.onrender.com/usercontent', {
-        withCredentials: true,
-      })
-      .subscribe({
-        next: (response: any) => {
-          console.log('Response from server:', response); // Verificar el contenido de la respuesta
-          this.userContent = response.content.md_content;
-          this.markdownContent = this.userContent;
-          this.formContent.patchValue({
-            text_content: this.userContent,
-          });
-          console.log('Converted Markdown:', this.userContent); // Verificar el contenido convertido
-        },
-        error: (error) => {
-          console.error('Error fetching secure data:', error);
-        },
-      });
+    this.contentService.getUserContent().subscribe({
+      next: (response: any) => {
+        console.log('Response from server:', response);
+        this.userContent = response.content.md_content;
+        this.markdownContent = this.userContent;
+        this.formContent.patchValue({
+          text_content: this.userContent,
+        });
+        console.log('Converted Markdown:', this.userContent);
+      },
+      error: (error) => {
+        console.error('Error fetching secure data:', error);
+      },
+    });
   }
 
   convertMarkdownToJson(markdown: string): any {

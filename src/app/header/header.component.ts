@@ -1,5 +1,4 @@
 import { isPlatformBrowser, NgIf } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import {
   Component,
   ElementRef,
@@ -10,8 +9,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
-import { AuthService } from '../auth.service.js';
+import { AuthService } from '../services/auth.service.js';
 
 @Component({
   selector: 'app-header',
@@ -25,15 +23,13 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
-    private http: HttpClient,
-    private cookieService: CookieService,
     private authService: AuthService
   ) {}
 
   ngOnInit(): void {
     // TODO: Arreglar esto
     if (isPlatformBrowser(this.platformId)) {
-      this.authService.login();
+      this.authService.checkLogin();
     }
 
     this.authService.isLoggedIn$.subscribe((status) => {
@@ -42,21 +38,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut() {
-    this.http
-      .get('https://apiblogmapaches.onrender.com/logout', {
-        withCredentials: true,
-      })
-      .subscribe({
-        next: (response: any) => {
-          console.log(response.message as string);
-          this.authService.logout();
-        },
-        error: (error) => {
-          console.error('Error fetching logout data:', error);
-        },
-      });
-
-    this.cookieService.delete('authToken');
+    this.authService.logout();
   }
 
   @ViewChild('navLogo') navLogo!: ElementRef;

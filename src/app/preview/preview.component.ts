@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MarkdownModule } from 'ngx-markdown';
+import { ContentService } from '../services/content.service.js';
 
 @Component({
   selector: 'app-preview',
@@ -12,28 +12,14 @@ import { MarkdownModule } from 'ngx-markdown';
   styleUrl: './preview.component.css',
 })
 export class PreviewComponent {
-  userContent = '';
-  constructor(private http: HttpClient) {}
+  userContent: any;
+  constructor(private contentService: ContentService) {}
 
   ngOnInit() {
     this.getUserContent();
   }
 
-  getUserContent() {
-    this.http
-      .get('https://apiblogmapaches.onrender.com/usercontent', {
-        withCredentials: true,
-      })
-      .subscribe({
-        next: (response: any) => {
-          console.log('Response from server:', response); // Verificar el contenido de la respuesta
-          const mdDB = response.content.md_content;
-          this.userContent = mdDB;
-          console.log('Converted Markdown:', this.userContent); // Verificar el contenido convertido
-        },
-        error: (error) => {
-          console.error('Error fetching secure data:', error);
-        },
-      });
+  async getUserContent() {
+    this.userContent = await this.contentService?.getUserContent();
   }
 }

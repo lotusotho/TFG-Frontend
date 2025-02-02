@@ -5,10 +5,10 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../services/auth.service.js';
 
 @Component({
   selector: 'app-signup',
@@ -20,7 +20,7 @@ import { RouterLink } from '@angular/router';
 export class SignupComponent {
   signupForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
     this.signupForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(4)]],
       email: [
@@ -43,16 +43,14 @@ export class SignupComponent {
         type: 1,
       };
 
-      this.http
-        .post('https://apiblogmapaches.onrender.com/register', formData)
-        .subscribe({
-          next: (response) => {
-            console.log('Signup successful', response);
-          },
-          error: (error) => {
-            console.error('Signup failed', error);
-          },
-        });
+      this.authService.register(formData).subscribe({
+        next: (response) => {
+          console.log('Signup successful', response);
+        },
+        error: (error) => {
+          console.error('Signup failed', error);
+        },
+      });
     }
   }
 }
