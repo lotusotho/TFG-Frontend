@@ -53,4 +53,9 @@ export const routes: Routes = [
     component: FooterComponent,
     outlet: 'FooterOutlet',
   },
+  {
+    path: '**',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
 ];
