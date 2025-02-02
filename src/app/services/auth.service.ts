@@ -41,6 +41,8 @@ export class AuthService {
   }
 
   logout() {
+    this.cookieService.delete('authToken');
+
     this.httpClient
       .get(`${this.API_URL}/logout`, { withCredentials: true })
       .subscribe({
@@ -52,8 +54,6 @@ export class AuthService {
           console.error('Error fetching logout data:', error);
         },
       });
-
-    this.cookieService.delete('authToken');
   }
 
   checkLogin() {
