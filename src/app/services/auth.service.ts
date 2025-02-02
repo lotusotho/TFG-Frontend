@@ -46,13 +46,14 @@ export class AuthService {
       .subscribe({
         next: (response: any) => {
           console.log(response.message as string);
-          this.cookieService.delete('authToken');
           this.isLoggedIn.next(false);
         },
         error: (error) => {
           console.error('Error fetching logout data:', error);
         },
       });
+
+    this.cookieService.delete('authToken');
   }
 
   checkLogin() {

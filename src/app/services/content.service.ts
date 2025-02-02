@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { API_URL } from '../../contants.js';
 
 @Injectable({
@@ -19,15 +19,17 @@ export class ContentService {
     );
   }
 
-  getUsernameByToken(): Observable<string> {
-    return this.http
-      .get(`${API_URL}/tokenusername`, { withCredentials: true })
-      .pipe(map((response: any) => response.username));
+  getUsernameByToken(): Observable<{ username: string }> {
+    return this.http.get<{ username: string }>(
+      `${this.API_URL}/tokenusername`,
+      { withCredentials: true }
+    );
   }
 
-  getUserContent(): Observable<any> {
-    return this.http
-      .get(`${API_URL}/usercontent`, { withCredentials: true })
-      .pipe(map((response: any) => response.content.md_content));
+  getUserContent(): Observable<{ content: { md_content: string } }> {
+    return this.http.get<{ content: { md_content: string } }>(
+      `${this.API_URL}/usercontent`,
+      { withCredentials: true }
+    );
   }
 }

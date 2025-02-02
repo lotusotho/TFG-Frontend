@@ -19,7 +19,16 @@ export class PreviewComponent {
     this.getUserContent();
   }
 
-  async getUserContent() {
-    this.userContent = await this.contentService?.getUserContent();
+  getUserContent() {
+    this.contentService.getUserContent().subscribe({
+      next: (response: any) => {
+        console.log('Response from server:', response);
+        this.userContent = response.content.md_content;
+        console.log('Converted Markdown:', this.userContent);
+      },
+      error: (error) => {
+        console.error('Error fetching secure data:', error);
+      },
+    });
   }
 }

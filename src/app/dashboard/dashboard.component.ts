@@ -60,7 +60,7 @@ export class DashboardComponent implements OnInit {
       const markdown = this.formContent.value['text_content'];
       this.text_content = this.convertMarkdownToJson(markdown);
       this.contentService.postContent(this.text_content, markdown).subscribe({
-        next: (response: any) => {
+        next: (response) => {
           console.log('Content posted', response);
         },
         error: (error) => {
