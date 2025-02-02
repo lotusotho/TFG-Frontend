@@ -31,13 +31,19 @@ export class LoginComponent {
     console.log('Form submitted');
     if (this.loginForm.valid) {
       console.log('Form is valid');
-      const formData = {
-        ...this.loginForm.value,
-      };
-      this.authService.login({
-        username: this.loginForm.value['username'],
-        password: this.loginForm.value['password'],
-      });
+      this.authService
+        .login({
+          username: this.loginForm.value['username'],
+          password: this.loginForm.value['password'],
+        })
+        .subscribe({
+          next: (response) => {
+            console.log('Login successful', response);
+          },
+          error: (error) => {
+            console.error('Login failed', error);
+          },
+        });
     } else {
       console.log('Form is invalid');
     }
