@@ -30,7 +30,7 @@ export class AuthService {
           if (response.authToken) {
             this.cookieService.set('authToken', response.authToken, {
               expires: 1 / 24,
-              domain: 'tfg-frontend-three.vercel.app',
+              domain: 'blog.mapach.es',
               secure: true,
               sameSite: 'Lax',
             });
