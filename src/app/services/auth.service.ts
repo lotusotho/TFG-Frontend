@@ -31,8 +31,8 @@ export class AuthService {
             this.cookieService.set('authToken', response.authToken, {
               expires: 1 / 24,
               domain: 'blog.mapach.es',
-              path: '/',
               secure: true,
+              sameSite: 'Lax',
             });
             this.isLoggedIn.next(true);
           }
