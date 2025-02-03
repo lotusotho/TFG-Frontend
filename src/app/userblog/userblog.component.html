@@ -1,0 +1,18 @@
+<div class="container p-5">
+  <p class="title">Modo vista previa:</p>
+  <hr />
+  <markdown
+    class="content box has-text-centered"
+    [data]="userContent"
+    ngPreserveWhitespaces
+  ></markdown>
+  <div class="buttons">
+    <a class="button is-success">Confirmar</a>
+    <a
+      class="button is-danger"
+      [routerLink]="['/dashboard']"
+      routerLinkActive="router-link-active"
+      >Volver</a
+    >
+  </div>
+</div>
