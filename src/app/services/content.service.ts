@@ -32,10 +32,4 @@ export class ContentService {
       { withCredentials: true }
     );
   }
-
-  getUserContentDomain(): Observable<{ content: { md_content: string } }> {
-    return this.http.get<{ content: { md_content: string } }>(
-      `${this.API_URL}/userpage`
-    );
-  }
 }
