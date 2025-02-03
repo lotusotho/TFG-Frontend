@@ -4,11 +4,10 @@ import { HomeComponent } from './home/home.component.js';
 import { SignupComponent } from './signup/signup.component.js';
 import { LoginComponent } from './login/login.component.js';
 import { DashboardComponent } from './dashboard/dashboard.component.js';
-import { PreviewComponent } from './preview/preview.component.js';
-import { NgModule } from '@angular/core';
 import { MdinfoComponent } from './mdinfo/mdinfo.component.js';
 import { FooterComponent } from './footer/footer.component.js';
 import { AuthGuard } from './guards/auth.guard.js';
+import { UserblogComponent } from './userblog/userblog.component.js';
 
 export const routes: Routes = [
   {
@@ -30,9 +29,8 @@ export const routes: Routes = [
         canActivate: [AuthGuard],
       },
       {
-        path: 'preview',
-        component: PreviewComponent,
-        canActivate: [AuthGuard],
+        path: 'userblog',
+        component: UserblogComponent,
       },
       {
         path: 'signup',

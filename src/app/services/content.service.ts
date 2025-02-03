@@ -26,10 +26,21 @@ export class ContentService {
     );
   }
 
+  getUsername(): Observable<{ username: string }> {
+    return this.http.get<{ username: string }>(`${this.API_URL}/username`);
+  }
+
   getUserContent(): Observable<{ content: { md_content: string } }> {
     return this.http.get<{ content: { md_content: string } }>(
       `${this.API_URL}/usercontent`,
       { withCredentials: true }
     );
+  }
+
+  getUserContentQuery(blog: string): Observable<{ content: string }> {
+    return this.http.get<{ content: string }>(`${this.API_URL}/userpage`, {
+      params: { blog },
+      withCredentials: true,
+    });
   }
 }
