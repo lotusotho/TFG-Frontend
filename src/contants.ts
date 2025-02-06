@@ -1,1 +1,1 @@
-export const API_URL = 'https://apiblog.mapach.es';
+export const API_URL = 'http://server.mapach.es';
