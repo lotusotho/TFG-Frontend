@@ -67,7 +67,9 @@ export class DashboardComponent implements OnInit {
           console.error('Error posting content:', error);
         },
       });
-      this.router.navigate(['/preview']);
+      this.router.navigateByUrl(
+        `https://blog.mapach.es/userblog?blog=${this.getUsernameByToken()}`
+      );
     }
   }
 
