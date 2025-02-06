@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { CookieService } from 'ngx-cookie-service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { API_URL } from '../../contants.js';
@@ -9,10 +8,7 @@ import { API_URL } from '../../contants.js';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(
-    private cookieService: CookieService,
-    private httpClient: HttpClient
-  ) {}
+  constructor(private httpClient: HttpClient) {}
 
   private API_URL = API_URL;
   private isLoggedIn = new BehaviorSubject<boolean>(false);
@@ -43,8 +39,6 @@ export class AuthService {
   }
 
   logout() {
-    this.cookieService.delete('authToken');
-
     this.httpClient
       .get(`${this.API_URL}/logout`, {
         headers: this.getAuthHeaders(),
@@ -52,6 +46,7 @@ export class AuthService {
       .subscribe({
         next: (response: any) => {
           console.log(response.message as string);
+          localStorage.removeItem('authToken');
           this.isLoggedIn.next(false);
         },
         error: (error) => {
@@ -61,7 +56,7 @@ export class AuthService {
   }
 
   checkLogin() {
-    const authToken = this.cookieService.get('authToken');
+    const authToken = localStorage.getItem('authToken');
     if (authToken) {
       this.isLoggedIn.next(true);
     } else {
