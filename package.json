@@ -31,7 +31,6 @@
     "katex": "0.16.0",
     "luxon": "^3.5.0",
     "marked": "15.0.0",
-    "ngx-cookie-service": "^19.0.0",
     "ngx-markdown": "^19.0.0",
     "ngx-typed-writer": "^1.4.0",
     "prismjs": "1.28.0",
