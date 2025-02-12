@@ -61,7 +61,7 @@ export class DashboardComponent implements OnInit {
     if (this.formContent.valid) {
       const markdown = this.formContent.value['text_content'];
       this.text_content = this.convertMarkdownToJson(markdown);
-      const headers = this.authService.getAuthHeaders(); // Get auth headers
+      const headers = this.authService.getAuthHeaders();
       this.contentService
         .postContent(this.text_content, markdown, {
           headers,
@@ -96,20 +96,23 @@ export class DashboardComponent implements OnInit {
   }
 
   getUserContent() {
-    this.contentService.getUserContent().subscribe({
-      next: (response: any) => {
-        console.log('Response from server:', response);
-        this.userContent = response.content.md_content;
-        this.markdownContent = this.userContent;
-        this.formContent.patchValue({
-          text_content: this.userContent,
-        });
-        console.log('Converted Markdown:', this.userContent);
-      },
-      error: (error) => {
-        console.error('Error fetching secure data:', error);
-      },
-    });
+    const headers = this.authService.getAuthHeaders();
+    this.contentService
+      .getUserContent({ headers, withCredentials: true })
+      .subscribe({
+        next: (response: any) => {
+          console.log('Response from server:', response);
+          this.userContent = response.content.md_content;
+          this.markdownContent = this.userContent;
+          this.formContent.patchValue({
+            text_content: this.userContent,
+          });
+          console.log('Converted Markdown:', this.userContent);
+        },
+        error: (error) => {
+          console.error('Error fetching secure data:', error);
+        },
+      });
   }
 
   convertMarkdownToJson(markdown: string): any {
