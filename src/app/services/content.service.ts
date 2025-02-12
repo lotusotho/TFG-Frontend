@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { API_URL } from '../../contants.js';
 import { AuthService } from './auth.service.js';
@@ -12,29 +12,45 @@ export class ContentService {
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
-  postContent(text_content: any, md_content: string): Observable<any> {
+  postContent(
+    text_content: any,
+    md_content: string,
+    options?: { headers: HttpHeaders; withCredentials: boolean }
+  ): Observable<any> {
     return this.http.post(
       `${this.API_URL}/submitcontent`,
       { text_content, md_content },
-      { headers: this.authService.getAuthHeaders() }
+      options
     );
   }
 
-  getUsernameByToken(): Observable<{ username: string }> {
+  getUsernameByToken(options?: {
+    headers: HttpHeaders;
+    withCredentials: boolean;
+  }): Observable<{ username: string }> {
     return this.http.get<{ username: string }>(
       `${this.API_URL}/tokenusername`,
-      { headers: this.authService.getAuthHeaders() }
+      options
     );
   }
 
-  getUsername(): Observable<{ username: string }> {
-    return this.http.get<{ username: string }>(`${this.API_URL}/username`);
+  getUsername(options?: {
+    headers: HttpHeaders;
+    withCredentials: boolean;
+  }): Observable<{ username: string }> {
+    return this.http.get<{ username: string }>(
+      `${this.API_URL}/username`,
+      options
+    );
   }
 
-  getUserContent(): Observable<{ content: { md_content: string } }> {
+  getUserContent(options?: {
+    headers: HttpHeaders;
+    withCredentials: boolean;
+  }): Observable<{ content: { md_content: string } }> {
     return this.http.get<{ content: { md_content: string } }>(
       `${this.API_URL}/usercontent`,
-      { headers: this.authService.getAuthHeaders() }
+      options
     );
   }
 
