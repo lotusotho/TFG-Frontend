@@ -16,9 +16,13 @@ export class AuthService {
 
   public getAuthHeaders(): HttpHeaders {
     const authToken = localStorage.getItem('authToken');
-    return new HttpHeaders({
-      authorization: `Bearer ${authToken}`,
-    });
+    if (authToken) {
+      return new HttpHeaders({
+        authorization: `Bearer ${authToken}`,
+      });
+    } else {
+      return new HttpHeaders();
+    }
   }
 
   register(formData: any): Observable<any> {
