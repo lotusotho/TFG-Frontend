@@ -1,0 +1,22 @@
+<div class="container is-widescreen p-5">
+  <p class="title is-1">Verificar Cuenta</p>
+  <div class="field">
+    <div class="control">
+      <button class="button is-link" (click)="verifyAccount()">
+        Verificar Cuenta
+      </button>
+    </div>
+  </div>
+  <div *ngIf="verificationSuccess === true" class="notification is-success">
+    <span class="icon">
+      <i class="fas fa-check"></i>
+    </span>
+    <span>¡Verificación exitosa!</span>
+  </div>
+  <div *ngIf="verificationSuccess === false" class="notification is-danger">
+    <span class="icon">
+      <i class="fas fa-times"></i>
+    </span>
+    <span>La verificación falló. Por favor, inténtelo de nuevo.</span>
+  </div>
+</div>

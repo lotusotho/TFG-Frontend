@@ -3,7 +3,7 @@ import { HeaderComponent } from './header/header.component.js';
 import { HomeComponent } from './home/home.component.js';
 import { SignupComponent } from './signup/signup.component.js';
 import { LoginComponent } from './login/login.component.js';
-import { DashboardComponent } from './dashboard/dashboard.component.js';
+import { DashboardComponent } from './usercontent/dashboard/dashboard.component.js';
 import { MdinfoComponent } from './mdinfo/mdinfo.component.js';
 import { FooterComponent } from './footer/footer.component.js';
 import { AuthGuard } from './guards/auth.guard.js';

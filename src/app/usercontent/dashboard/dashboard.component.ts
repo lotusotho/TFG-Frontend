@@ -9,8 +9,8 @@ import {
 import { MarkdownModule, MarkdownService } from 'ngx-markdown';
 import { marked } from 'marked';
 import { Router } from '@angular/router';
-import { ContentService } from '../services/content.service';
-import { AuthService } from '../services/auth.service.js';
+import { ContentService } from '../../services/content.service';
+import { AuthService } from '../../services/auth.service.js';
 
 @Component({
   selector: 'app-dashboard',

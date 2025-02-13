@@ -67,4 +67,34 @@ export class AuthService {
       this.isLoggedIn.next(false);
     }
   }
+
+  sendVerificationEmail(): Observable<any> {
+    return this.httpClient.post(
+      `${this.API_URL}/send-verification-email`,
+      {},
+      {
+        headers: this.getAuthHeaders(),
+      }
+    );
+  }
+
+  sendPasswordResetEmail(email: string): Observable<any> {
+    return this.httpClient.post(`${this.API_URL}/send-password-reset-email`, {
+      email,
+    });
+  }
+
+  resetPassword(token: string, newPassword: string): Observable<any> {
+    return this.httpClient.post(`${this.API_URL}/reset-password`, {
+      token,
+      newPassword,
+    });
+  }
+
+  verifyEmail(token: string): Observable<any> {
+    return this.httpClient.get(`${this.API_URL}/verify-email`, {
+      headers: this.getAuthHeaders(),
+      params: { token },
+    });
+  }
 }
