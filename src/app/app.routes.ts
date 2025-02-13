@@ -10,6 +10,7 @@ import { AuthGuard } from './guards/auth.guard.js';
 import { UserblogComponent } from './userblog/userblog.component.js';
 import { VerifyaccountComponent } from './verification/verifyaccount/verifyaccount.component.js';
 import { ResetpasswordComponent } from './verification/resetpassword/resetpassword.component.js';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component.js';
 
 export const routes: Routes = [
   {
@@ -56,6 +57,10 @@ export const routes: Routes = [
   {
     path: 'verify-email',
     component: VerifyaccountComponent,
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotpasswordComponent,
   },
   {
     path: 'reset-password',
