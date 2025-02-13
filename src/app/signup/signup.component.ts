@@ -48,7 +48,7 @@ export class SignupComponent {
       this.authService.register(formData).subscribe({
         next: (response) => {
           console.log('Signup successful', response);
-          this.authService.sendVerificationEmail().subscribe({
+          this.authService.sendVerificationEmail(formData).subscribe({
             next: (emailResponse) => {
               console.log('Verification email sent', emailResponse);
             },

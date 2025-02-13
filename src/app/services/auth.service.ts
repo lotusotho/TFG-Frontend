@@ -69,13 +69,10 @@ export class AuthService {
     }
   }
 
-  sendVerificationEmail(): Observable<any> {
+  sendVerificationEmail(formData: any): Observable<any> {
     return this.httpClient.post(
       `${this.API_URL}/send-verification-email`,
-      {},
-      {
-        headers: this.getAuthHeaders(),
-      }
+      formData
     );
   }
 
@@ -94,7 +91,6 @@ export class AuthService {
 
   verifyEmail(token: string): Observable<any> {
     return this.httpClient.get(`${this.API_URL}/verify-email`, {
-      headers: this.getAuthHeaders(),
       params: { token },
     });
   }
