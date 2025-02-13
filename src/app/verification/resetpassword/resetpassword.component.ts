@@ -45,7 +45,9 @@ export class ResetpasswordComponent {
       this.authService.resetPassword(this.token, newPassword).subscribe({
         next: (response) => {
           console.log('Password reset successful', response);
-          this.router.navigate(['/login']);
+          setTimeout(() => {
+            this.router.navigate(['/login']);
+          }, 2 * 1000);
         },
         error: (error) => {
           console.error('Password reset failed', error);
