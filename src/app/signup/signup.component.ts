@@ -48,14 +48,19 @@ export class SignupComponent {
       this.authService.register(formData).subscribe({
         next: (response) => {
           console.log('Signup successful', response);
-          this.authService.sendVerificationEmail(formData).subscribe({
-            next: (emailResponse) => {
-              console.log('Verification email sent', emailResponse);
-            },
-            error: (emailError) => {
-              console.error('Failed to send verification email', emailError);
-            },
-          });
+          this.authService
+            .sendVerificationEmail({
+              username: formData.username,
+              email: formData.email,
+            })
+            .subscribe({
+              next: (emailResponse) => {
+                console.log('Verification email sent', emailResponse);
+              },
+              error: (emailError) => {
+                console.error('Failed to send verification email', emailError);
+              },
+            });
         },
         error: (error) => {
           console.error('Signup failed', error);
