@@ -8,6 +8,8 @@ import { MdinfoComponent } from './mdinfo/mdinfo.component.js';
 import { FooterComponent } from './footer/footer.component.js';
 import { AuthGuard } from './guards/auth.guard.js';
 import { UserblogComponent } from './userblog/userblog.component.js';
+import { VerifyaccountComponent } from './verification/verifyaccount/verifyaccount.component.js';
+import { ResetpasswordComponent } from './verification/resetpassword/resetpassword.component.js';
 
 export const routes: Routes = [
   {
@@ -50,6 +52,14 @@ export const routes: Routes = [
     path: '',
     component: FooterComponent,
     outlet: 'FooterOutlet',
+  },
+  {
+    path: 'verify-email',
+    component: VerifyaccountComponent,
+  },
+  {
+    path: 'reset-password',
+    component: ResetpasswordComponent,
   },
   {
     path: '**',
