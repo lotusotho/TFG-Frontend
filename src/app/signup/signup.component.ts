@@ -22,7 +22,7 @@ export class SignupComponent {
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
     this.signupForm = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(4)]],
+      username: ['', [Validators.required, Validators.minLength(5)]],
       email: [
         '',
         [
@@ -39,7 +39,9 @@ export class SignupComponent {
   onSubmit() {
     if (this.signupForm.valid) {
       const formData = {
-        ...this.signupForm.value,
+        username: this.signupForm.value['username'].toLowerCase(),
+        email: this.signupForm.value['email'].toLowerCase(),
+        password: this.signupForm.value['password'].toLowerCase(),
         type: 1,
       };
 

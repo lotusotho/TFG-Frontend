@@ -18,7 +18,8 @@ export class AuthService {
     const authToken = localStorage.getItem('authToken');
     if (authToken) {
       return new HttpHeaders({
-        authorization: `Bearer ${authToken}`,
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + authToken,
       });
     } else {
       return new HttpHeaders();
