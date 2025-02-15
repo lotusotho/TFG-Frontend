@@ -1,0 +1,30 @@
+import { Component, OnInit } from '@angular/core';
+import { ContentService } from '../services/content.service.js';
+import { NgFor } from '@angular/common';
+
+@Component({
+  selector: 'app-allposts',
+  standalone: true,
+  imports: [NgFor],
+  templateUrl: './allposts.component.html',
+  styleUrl: './allposts.component.css',
+})
+export class AllpostsComponent implements OnInit {
+  allPostsData: any = '';
+  constructor(private contentService: ContentService) {}
+
+  ngOnInit(): void {
+    this.getAllPosts();
+  }
+
+  getAllPosts() {
+    this.contentService.getAllPosts().subscribe({
+      next: (response: any) => {
+        this.allPostsData = response.data;
+      },
+      error: (error: any) => {
+        console.log('Error getting all posts', error);
+      },
+    });
+  }
+}

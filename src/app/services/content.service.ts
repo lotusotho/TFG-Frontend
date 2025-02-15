@@ -13,13 +13,15 @@ export class ContentService {
   constructor(private http: HttpClient, private authService: AuthService) {}
 
   postContent(
+    title: string,
+    emoji: string,
     text_content: any,
     md_content: string,
     options?: { headers: HttpHeaders; withCredentials: boolean }
   ): Observable<any> {
     return this.http.post(
       `${this.API_URL}/submitcontent`,
-      { text_content, md_content },
+      { text_content, md_content, title, emoji },
       options
     );
   }
@@ -58,5 +60,9 @@ export class ContentService {
     return this.http.get<{ content: string }>(`${this.API_URL}/userpage`, {
       params: { blog },
     });
+  }
+
+  getAllPosts(): Observable<{ data: string }> {
+    return this.http.get<{ data: string }>(`${this.API_URL}/all-posts`);
   }
 }

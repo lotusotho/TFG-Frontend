@@ -5,33 +5,123 @@
       }}{{ username.slice(1) }}:
     </h1>
     <p class="subtitle"></p>
-    <form [formGroup]="formContent">
+    <form [formGroup]="formContent" (ngSubmit)="postContent()">
+      <!-- Fila para título y emoji -->
+      <div class="columns is-vcentered">
+        <!-- Campo de Título -->
+        <div class="column is-10">
+          <div class="field">
+            <label class="label">Título</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                formControlName="title"
+                placeholder="Escribe un título..."
+              />
+            </div>
+            <p
+              class="help is-danger"
+              *ngIf="
+                formContent.get('title')?.touched &&
+                formContent.get('title')?.errors
+              "
+            >
+              <span *ngIf="formContent.get('title')?.errors?.['required']">
+                El título es obligatorio.
+              </span>
+              <span *ngIf="formContent.get('title')?.errors?.['minlength']">
+                El título debe tener al menos 4 caracteres.
+              </span>
+            </p>
+          </div>
+        </div>
+        <!-- Recuadro para seleccionar Emoji -->
+        <div class="column is-2">
+          <div class="field">
+            <label class="label">Emoji</label>
+            <div class="control">
+              <div
+                class="box"
+                style="cursor: pointer; text-align: center"
+                (click)="toggleEmojiPicker()"
+              >
+                <span
+                  *ngIf="formContent.get('emoji')?.value; else noEmoji"
+                  style="font-size: 2rem"
+                >
+                  {{ formContent.get("emoji")?.value }}
+                </span>
+                <ng-template #noEmoji>Haz click</ng-template>
+              </div>
+            </div>
+            <p
+              class="help is-danger"
+              *ngIf="
+                formContent.get('emoji')?.touched &&
+                formContent.get('emoji')?.errors
+              "
+            >
+              Debes seleccionar un emoji.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal de Emoji (Bulma) centrado -->
+      <div class="modal" [ngClass]="{ 'is-active': showEmojiPicker }">
+        <div class="modal-background" (click)="toggleEmojiPicker()"></div>
+        <div class="modal-content" style="margin: auto">
+          <div class="box">
+            <emoji-mart
+              [set]="'apple'"
+              [isNative]="true"
+              (emojiSelect)="selectEmoji($event)"
+            ></emoji-mart>
+          </div>
+        </div>
+        <button
+          class="modal-close is-large"
+          aria-label="close"
+          (click)="toggleEmojiPicker()"
+        ></button>
+      </div>
+
+      <!-- Campo de contenido -->
       <div class="field">
         <textarea
           id="text_content"
           class="textarea has-text-centered"
           formControlName="text_content"
-          placeholder="Write something..."
-          [value]="userContent"
+          placeholder="Escribe algo..."
           rows="10"
           (input)="markdownContent = formContent.get('text_content')?.value"
         ></textarea>
+        <p
+          class="help is-danger"
+          *ngIf="
+            formContent.get('text_content')?.touched &&
+            formContent.get('text_content')?.errors
+          "
+        >
+          <span *ngIf="formContent.get('text_content')?.errors?.['required']">
+            El contenido es obligatorio.
+          </span>
+          <span *ngIf="formContent.get('text_content')?.errors?.['minlength']">
+            El contenido debe tener al menos 5 caracteres.
+          </span>
+        </p>
       </div>
+
       <div class="has-text-centered">
         <button
           class="button title is-1 is-primary has-text-black"
           type="submit"
           [disabled]="formContent.invalid"
-          (click)="postContent()"
         >
           Subir
         </button>
       </div>
     </form>
-    <!-- <div class="preview container p-5 has-text-centered">
-      <p class="title is-2">Modo vista previa:</p>
-      <hr />
-      <div class="content"><markdown [data]="markdownContent"></markdown></div>
-    </div> -->
   </div>
 </div>

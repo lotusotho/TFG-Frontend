@@ -11,6 +11,7 @@ import { UserblogComponent } from './userblog/userblog.component.js';
 import { VerifyaccountComponent } from './verification/verifyaccount/verifyaccount.component.js';
 import { ResetpasswordComponent } from './verification/resetpassword/resetpassword.component.js';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component.js';
+import { AllpostsComponent } from './allposts/allposts.component.js';
 
 export const routes: Routes = [
   {
@@ -25,6 +26,10 @@ export const routes: Routes = [
       {
         path: 'home',
         component: HomeComponent,
+      },
+      {
+        path: 'posts',
+        component: AllpostsComponent,
       },
       {
         path: 'dashboard',

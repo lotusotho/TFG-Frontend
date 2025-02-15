@@ -7,15 +7,24 @@ import {
   Validators,
 } from '@angular/forms';
 import { MarkdownModule, MarkdownService } from 'ngx-markdown';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { marked } from 'marked';
 import { Router } from '@angular/router';
 import { ContentService } from '../../services/content.service';
 import { AuthService } from '../../services/auth.service.js';
+import { NgClass, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, MarkdownModule],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    MarkdownModule,
+    PickerModule,
+    NgIf,
+    NgClass,
+  ],
   providers: [MarkdownService],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
@@ -27,6 +36,8 @@ export class DashboardComponent implements OnInit {
   userContent = 'Initial value';
   text_content: any;
   current_phrase: string = '';
+  selectedEmoji: string = '';
+  showEmojiPicker: boolean = false;
 
   phrases: string[] = [
     '¿Qué se te ocurre hoy?',
@@ -42,6 +53,8 @@ export class DashboardComponent implements OnInit {
     private authService: AuthService
   ) {
     this.formContent = this.fb.group({
+      title: ['', [Validators.required, Validators.minLength(4)]],
+      emoji: ['', [Validators.required]],
       text_content: ['', [Validators.required, Validators.minLength(5)]],
     });
   }
@@ -63,10 +76,16 @@ export class DashboardComponent implements OnInit {
       this.text_content = this.convertMarkdownToJson(markdown);
       const headers = this.authService.getAuthHeaders();
       this.contentService
-        .postContent(this.text_content, markdown, {
-          headers,
-          withCredentials: true,
-        })
+        .postContent(
+          this.text_content,
+          markdown,
+          this.formContent.value['title'],
+          this.formContent.value['emoji'],
+          {
+            headers,
+            withCredentials: true,
+          }
+        )
         .subscribe({
           next: (response) => {
             console.log('Content posted', response);
@@ -122,5 +141,17 @@ export class DashboardComponent implements OnInit {
 
   convertJsonToMarkdown(tokens: any): string {
     return marked.parser(tokens);
+  }
+
+  toggleEmojiPicker(): void {
+    this.showEmojiPicker = !this.showEmojiPicker;
+  }
+
+  selectEmoji(event: any): void {
+    // Según la versión del paquete, el emoji seleccionado se obtiene como event.emoji.native
+    const emoji = event.emoji.native;
+    this.selectedEmoji = emoji;
+    this.formContent.patchValue({ emoji });
+    this.toggleEmojiPicker();
   }
 }
