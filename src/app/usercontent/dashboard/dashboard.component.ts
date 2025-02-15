@@ -77,10 +77,10 @@ export class DashboardComponent implements OnInit {
       const headers = this.authService.getAuthHeaders();
       this.contentService
         .postContent(
-          this.text_content,
-          markdown,
           this.formContent.value['title'],
           this.formContent.value['emoji'],
+          this.text_content,
+          markdown,
           {
             headers,
             withCredentials: true,
@@ -95,7 +95,7 @@ export class DashboardComponent implements OnInit {
           },
         });
       this.router.navigateByUrl(
-        `https://blog.mapach.es/userblog?blog=${this.getUsernameByToken()}`
+        `https://blog.mapach.es/userblog?blog=${this.username}`
       );
     }
   }
