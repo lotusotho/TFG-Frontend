@@ -26,7 +26,7 @@ export class UserblogComponent implements OnInit {
       if (blog) {
         this.contentService.getUserContentQuery(blog).subscribe(
           (response: any) => {
-            this.userContent = response.content;
+            this.userContent = response.data;
           },
           (error) => {
             console.error('Error fetching user content:', error);
