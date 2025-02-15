@@ -4,7 +4,11 @@
       <div class="column is-half">
         <div class="box">
           <p class="title is-1 has-text-centered">
-            {{ userContent.title }} - {{ userContent.user.username }} -
+            {{ userContent.title }} -
+            <span class="has-text-success">{{
+              userContent.user.username
+            }}</span>
+            -
             {{ userContent.emoji }}
           </p>
           <p class="subtitle">
