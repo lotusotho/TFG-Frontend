@@ -61,7 +61,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.getUsernameByToken();
-    this.getUserContent();
     this.choosePhrase();
   }
 
@@ -107,6 +106,7 @@ export class DashboardComponent implements OnInit {
       .subscribe({
         next: (response: any) => {
           this.username = response.username as string;
+          this.getUserContent();
         },
         error: (error) => {
           console.error('Error fetching secure data:', error);
