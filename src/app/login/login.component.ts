@@ -33,8 +33,8 @@ export class LoginComponent {
       console.log('Form is valid');
       this.authService
         .login({
-          username: this.loginForm.value['username'].toLowerCase(),
-          password: this.loginForm.value['password'].toLowerCase(),
+          username: this.loginForm.value['username'].toLowerCase().trim(),
+          password: this.loginForm.value['password'].toLowerCase().trim(),
         })
         .subscribe({
           next: (response) => {
