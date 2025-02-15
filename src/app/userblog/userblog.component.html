@@ -3,31 +3,42 @@
     <div class="columns is-centered">
       <div class="column is-half">
         <div class="box">
-          <p class="title is-1 has-text-centered">
-            {{ userContent.title }} -
-            <span class="has-text-success">{{
-              userContent.user.username
-            }}</span>
-            -
-            {{ userContent.emoji }}
-          </p>
-          <p class="subtitle">
-            {{ userContent.user.username }} a
-            {{ userContent.date_creation | date : "medium" }}
-          </p>
-          <div class="container">
-            <div class="content has-text-centered">
-              <markdown
-                lineHighlight
-                lineNumbers
-                commandLine
-                katex
-                mermaid
-                clipboard
-                [data]="userContent.md_content"
-              ></markdown>
+          <ng-container *ngIf="isLoading; else contentLoaded">
+            <div class="has-text-centered">
+              <button
+                class="button is-loading is-large"
+                style="pointer-events: none"
+              ></button>
+              <p>Loading content...</p>
             </div>
-          </div>
+          </ng-container>
+          <ng-template #contentLoaded>
+            <p class="title is-1 has-text-centered">
+              {{ userContent.title }} -
+              <span class="has-text-success">{{
+                userContent.user.username
+              }}</span>
+              -
+              {{ userContent.emoji }}
+            </p>
+            <p class="subtitle">
+              {{ userContent.user.username }} a
+              {{ userContent.date_creation | date : "medium" }}
+            </p>
+            <div class="container">
+              <div class="content has-text-centered">
+                <markdown
+                  lineHighlight
+                  lineNumbers
+                  commandLine
+                  katex
+                  mermaid
+                  clipboard
+                  [data]="userContent.md_content"
+                ></markdown>
+              </div>
+            </div>
+          </ng-template>
         </div>
       </div>
     </div>
