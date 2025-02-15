@@ -13,7 +13,15 @@
           </p>
           <div class="container">
             <div class="content has-text-centered">
-              <markdown [data]="userContent.md_content"></markdown>
+              <markdown
+                lineHighlight
+                lineNumbers
+                commandLine
+                katex
+                mermaid
+                clipboard
+                [data]="userContent.md_content"
+              ></markdown>
             </div>
           </div>
         </div>
