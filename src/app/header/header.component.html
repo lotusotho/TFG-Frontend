@@ -36,6 +36,13 @@
         >
           Inicio
         </a>
+        <a
+          class="navbar-item is-primary"
+          [routerLink]="['/posts']"
+          routerLinkActive="router-link-active"
+        >
+          Todos los blogs
+        </a>
 
         <a
           *ngIf="isAuthenticated"
