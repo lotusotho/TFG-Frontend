@@ -8,7 +8,9 @@
       <p class="title is-2">
         {{ post.user.username }} - {{ post.title }} - {{ post.emoji }}
       </p>
-      <p class="subtitle">Creado el: {{ post.date_creation }}</p>
+      <p class="subtitle">
+        Creado el: {{ post.date_creation | date : "medium" }}
+      </p>
       <a
         class="button is-info"
         href="https://blog.mapach.es/userblog?blog={{ post.user.username }}"

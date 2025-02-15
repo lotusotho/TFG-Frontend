@@ -117,7 +117,7 @@ export class DashboardComponent implements OnInit {
   getUserContent() {
     const headers = this.authService.getAuthHeaders();
     this.contentService
-      .getUserContent({ headers, withCredentials: true })
+      .getUserContent(this.username, { headers, withCredentials: true })
       .subscribe({
         next: (response: any) => {
           console.log('Response from server:', response);
@@ -148,7 +148,6 @@ export class DashboardComponent implements OnInit {
   }
 
   selectEmoji(event: any): void {
-    // Según la versión del paquete, el emoji seleccionado se obtiene como event.emoji.native
     const emoji = event.emoji.native;
     this.selectedEmoji = emoji;
     this.formContent.patchValue({ emoji });

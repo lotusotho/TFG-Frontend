@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ContentService } from '../services/content.service.js';
-import { NgFor } from '@angular/common';
+import { DatePipe, NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-allposts',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, DatePipe],
   templateUrl: './allposts.component.html',
   styleUrl: './allposts.component.css',
 })

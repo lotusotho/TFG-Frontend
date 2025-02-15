@@ -36,28 +36,24 @@ export class ContentService {
     );
   }
 
-  getUsername(options?: {
-    headers: HttpHeaders;
-    withCredentials: boolean;
-  }): Observable<{ username: string }> {
-    return this.http.get<{ username: string }>(
-      `${this.API_URL}/username`,
-      options
-    );
-  }
-
-  getUserContent(options?: {
-    headers: HttpHeaders;
-    withCredentials: boolean;
-  }): Observable<{ content: { md_content: string } }> {
+  getUserContent(
+    blog: string,
+    options?: {
+      headers: HttpHeaders;
+      withCredentials: boolean;
+    }
+  ): Observable<{ content: { md_content: string } }> {
     return this.http.get<{ content: { md_content: string } }>(
       `${this.API_URL}/usercontent`,
-      options
+      {
+        ...options,
+        params: { blog },
+      }
     );
   }
 
   getUserContentQuery(blog: string): Observable<{ content: string }> {
-    return this.http.get<{ content: string }>(`${this.API_URL}/userpage`, {
+    return this.http.get<{ content: string }>(`${this.API_URL}/all-posts`, {
       params: { blog },
     });
   }

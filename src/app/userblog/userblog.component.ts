@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ContentService } from '../services/content.service';
 import { MarkdownModule } from 'ngx-markdown';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-userblog',
   standalone: true,
-  imports: [MarkdownModule],
+  imports: [MarkdownModule, DatePipe],
   templateUrl: './userblog.component.html',
   styleUrl: './userblog.component.css',
 })
@@ -32,17 +33,6 @@ export class UserblogComponent implements OnInit {
           }
         );
       }
-    });
-  }
-
-  getUsername() {
-    this.contentService.getUsername().subscribe({
-      next: (response: any) => {
-        this.username = response.username as string;
-      },
-      error: (error) => {
-        console.error('Error fetching secure data:', error);
-      },
     });
   }
 }
