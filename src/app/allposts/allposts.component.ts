@@ -14,10 +14,10 @@ export class AllpostsComponent implements OnInit {
   constructor(private contentService: ContentService) {}
 
   ngOnInit(): void {
-    this.getAllPosts();
+    this.getPosts();
   }
 
-  getAllPosts() {
+  getPosts() {
     this.contentService.getAllPosts().subscribe({
       next: (response: any) => {
         this.allPostsData = response.data;

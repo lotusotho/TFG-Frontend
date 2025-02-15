@@ -62,7 +62,7 @@ export class ContentService {
     });
   }
 
-  getAllPosts(): Observable<{ data: string }> {
-    return this.http.get<{ data: string }>(`${this.API_URL}/all-posts`);
+  getAllPosts() {
+    return this.http.get(`${this.API_URL}/all-posts`);
   }
 }
