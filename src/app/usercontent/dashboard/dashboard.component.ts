@@ -32,8 +32,7 @@ import { NgClass, NgIf } from '@angular/common';
 export class DashboardComponent implements OnInit {
   formContent: FormGroup;
   username = '';
-  markdownContent = '';
-  userContent = 'Initial value';
+  userContent: any;
   text_content: any;
   current_phrase: string = '';
   selectedEmoji: string = '';
@@ -121,12 +120,14 @@ export class DashboardComponent implements OnInit {
       .subscribe({
         next: (response: any) => {
           console.log('Response from server:', response);
-          this.userContent = response.content.md_content;
-          this.markdownContent = this.userContent;
+          this.userContent = response.data[0];
+
           this.formContent.patchValue({
-            text_content: this.userContent,
+            title: this.userContent.title,
+            emoji: this.userContent.emoji,
+            text_content: this.userContent.md_content,
           });
-          console.log('Converted Markdown:', this.userContent);
+          console.log('Converted Markdown:', this.userContent.md_content);
         },
         error: (error) => {
           console.error('Error fetching secure data:', error);
