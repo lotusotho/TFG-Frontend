@@ -11,7 +11,7 @@ import { MarkdownModule } from 'ngx-markdown';
   styleUrl: './userblog.component.css',
 })
 export class UserblogComponent implements OnInit {
-  userContent = '';
+  userContent: any = '';
   username: string = '';
 
   constructor(
@@ -25,7 +25,7 @@ export class UserblogComponent implements OnInit {
       if (blog) {
         this.contentService.getUserContentQuery(blog).subscribe(
           (response: any) => {
-            this.userContent = response.content.md_content;
+            this.userContent = response.content;
           },
           (error) => {
             console.error('Error fetching user content:', error);

@@ -5,10 +5,13 @@
   </p>
   <div class="container" *ngFor="let post of allPostsData; let i = index">
     <div class="container">
-      <p class="title is-2">{{ post.user.username }} - {{ post.title }}</p>
+      <p class="title is-2">
+        {{ post.user.username }} - {{ post.title }} - {{ post.emoji }}
+      </p>
+      <p class="subtitle">Creado el: {{ post.date_creation }}</p>
       <a
         class="button is-info"
-        href="https://blog.mapach.es/userpage?blog={{ post.user.username }}"
+        href="https://blog.mapach.es/userblog?blog={{ post.user.username }}"
         >Ver blog</a
       >
     </div>

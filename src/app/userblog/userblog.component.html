@@ -3,10 +3,17 @@
     <div class="columns is-centered">
       <div class="column is-half">
         <div class="box">
-          <h1 class="title">User Blog</h1>
-          <h2 class="subtitle">Username: {{ username }}</h2>
-          <div class="content">
-            <markdown [data]="userContent"></markdown>
+          <p class="title is-1">
+            {{ userContent.title }} - {{ userContent.user.username }} -
+            {{ userContent.emoji }}
+          </p>
+          <p class="subtitle">
+            {{ userContent.user.username }} a {{ userContent.date_creation }}
+          </p>
+          <div class="container">
+            <div class="content">
+              <markdown [data]="userContent"></markdown>
+            </div>
           </div>
         </div>
       </div>
