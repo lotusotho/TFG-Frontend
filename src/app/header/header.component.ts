@@ -8,7 +8,7 @@ import {
   PLATFORM_ID,
   ViewChild,
 } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from '../services/auth.service.js';
 
 @Component({
@@ -23,7 +23,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -39,6 +40,7 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     this.authService.logout();
+    this.router.navigate(['/home']);
   }
 
   @ViewChild('navLogo') navLogo!: ElementRef;

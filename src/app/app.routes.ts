@@ -12,6 +12,8 @@ import { VerifyaccountComponent } from './verification/verifyaccount/verifyaccou
 import { ResetpasswordComponent } from './verification/resetpassword/resetpassword.component.js';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component.js';
 import { AllpostsComponent } from './allposts/allposts.component.js';
+import { NotverifiedComponent } from './notverified/notverified.component.js';
+import { VerifiedGuard } from './guards/verified.guard.js';
 
 export const routes: Routes = [
   {
@@ -34,7 +36,7 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent,
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard, VerifiedGuard],
       },
       {
         path: 'userblog',
@@ -70,6 +72,10 @@ export const routes: Routes = [
   {
     path: 'reset-password',
     component: ResetpasswordComponent,
+  },
+  {
+    path: 'not-verified',
+    component: NotverifiedComponent,
   },
   {
     path: '**',
