@@ -39,9 +39,9 @@ export class SignupComponent {
   onSubmit() {
     if (this.signupForm.valid) {
       const formData = {
-        username: this.signupForm.value['username'].toLowerCase(),
-        email: this.signupForm.value['email'].toLowerCase(),
-        password: this.signupForm.value['password'].toLowerCase(),
+        username: this.signupForm.value['username'].toLowerCase().trim(),
+        email: this.signupForm.value['email'].toLowerCase().trim(),
+        password: this.signupForm.value['password'].toLowerCase().trim(),
         type: 1,
       };
 
