@@ -87,14 +87,12 @@ export class DashboardComponent implements OnInit {
         .subscribe({
           next: (response) => {
             console.log('Content posted', response);
+this.router.navigateByUrl(`https://blog.mapach.es/userblog?blog=${this.username}`);
           },
           error: (error) => {
             console.error('Error posting content:', error);
           },
         });
-      this.router.navigateByUrl(
-        `https://blog.mapach.es/userblog?blog=${this.username}`
-      );
     }
   }
 
