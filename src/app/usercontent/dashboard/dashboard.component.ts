@@ -87,7 +87,7 @@ export class DashboardComponent implements OnInit {
         .subscribe({
           next: (response) => {
             console.log('Content posted', response);
-this.router.navigate([`/userblog`], { queryParams: { blog: this.username.toLowerCase().trim() } });
+this.router.navigate(['/userblog'], { queryParams: { blog: this.username.toLowerCase().trim() } });
           },
           error: (error) => {
             console.error('Error posting content:', error);
