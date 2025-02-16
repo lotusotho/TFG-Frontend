@@ -1,32 +1,46 @@
-<div class="container is-widescreen m-4">
+<div class="container is-fluid">
   <div class="section">
-    <div class="box">
-      <ng-container *ngIf="isLoading; else contentLoaded">
-        <div class="has-text-centered">
-          <button
-            class="button is-loading is-large"
-            style="pointer-events: none"
-          ></button>
-          <p>Cargando blog...</p>
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <div class="box">
+          <ng-container *ngIf="isLoading; else contentLoaded">
+            <div class="has-text-centered">
+              <button
+                class="button is-loading is-large"
+                style="pointer-events: none"
+              ></button>
+              <p>Cargando blog...</p>
+            </div>
+          </ng-container>
+          <ng-template #contentLoaded>
+            <p class="title is-1 has-text-centered">
+              {{ userContent.title }} -
+              <span class="has-text-success">{{
+                userContent.user.username
+              }}</span>
+              -
+              {{ userContent.emoji }}
+            </p>
+            <p class="subtitle">
+              {{ userContent.user.username }} a
+              {{ userContent.date_creation | date : "medium" }}
+            </p>
+            <div class="container">
+              <div class="content has-text-centered">
+                <markdown
+                  lineHighlight
+                  lineNumbers
+                  commandLine
+                  katex
+                  mermaid
+                  clipboard
+                  [data]="userContent.md_content"
+                ></markdown>
+              </div>
+            </div>
+          </ng-template>
         </div>
-      </ng-container>
-      <ng-template #contentLoaded>
-        <p class="title is-size-4-mobile is-size-1-desktop has-text-centered">
-          {{ userContent.title }}
-          <span class="has-text-success">{{ userContent.user.username }}</span>
-          {{ userContent.emoji }}
-        </p>
-        <p class="subtitle is-size-7-mobile has-text-centered">
-          {{ userContent.user.username }} a 
-          {{ userContent.date_creation | date : "medium" }}
-        </p>
-        <div class="content is-clipped has-text-wrap" style="word-break: break-word; overflow: hidden;">
-          <markdown
-            lineHighlight lineNumbers commandLine katex mermaid clipboard
-            [data]="userContent.md_content">
-          </markdown>
-        </div>
-      </ng-template>
+      </div>
     </div>
   </div>
 </div>
