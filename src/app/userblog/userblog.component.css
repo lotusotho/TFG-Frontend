@@ -1,0 +1,11 @@
+markdown {
+  display: block;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .box {
+    padding: 1rem;
+    margin: 0 0.5rem;
+  }
+}
