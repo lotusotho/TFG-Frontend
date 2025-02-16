@@ -20,12 +20,12 @@
               {{ userContent.user.username }} a 
               {{ userContent.date_creation | date : "medium" }}
             </p>
-            <div class="content" style="overflow-x: auto; word-break: break-word;">
-              <markdown
-                lineHighlight lineNumbers commandLine katex mermaid clipboard
-                [data]="userContent.md_content">
-              </markdown>
-            </div>
+  <div class="content is-clipped has-text-wrap" style="word-break: break-word;">
+  <markdown
+    lineHighlight lineNumbers commandLine katex mermaid clipboard
+    [data]="userContent.md_content">
+  </markdown>
+</div>
           </ng-template>
         </div>
       </div>
