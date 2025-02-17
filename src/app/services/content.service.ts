@@ -53,7 +53,7 @@ export class ContentService {
   }
 
   getUserContentQuery(blog: string): Observable<{ content: string }> {
-    return this.http.get<{ content: string }>(`${this.API_URL}/all-posts`, {
+    return this.http.get<{ content: string }>(`${this.API_URL}/posts`, {
       params: { blog },
     });
   }
