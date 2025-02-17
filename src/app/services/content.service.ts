@@ -59,6 +59,6 @@ export class ContentService {
   }
 
   getAllPosts() {
-    return this.http.get(`${this.API_URL}/all-posts`);
+    return this.http.get(`${this.API_URL}/posts`);
   }
 }
