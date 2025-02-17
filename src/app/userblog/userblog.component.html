@@ -1,7 +1,7 @@
-<div class="container is-fluid">
+<div class="container is-fluid userblog-container">
   <div class="section">
     <div class="columns is-centered">
-      <div class="column is-half">
+      <div class="column is-full-mobile is-half-tablet is-half-desktop">
         <div class="box">
           <ng-container *ngIf="isLoading; else contentLoaded">
             <div class="has-text-centered">
@@ -15,9 +15,9 @@
           <ng-template #contentLoaded>
             <p class="title is-1 has-text-centered">
               {{ userContent.title }} -
-              <span class="has-text-success">{{
-                userContent.user.username
-              }}</span>
+              <span class="has-text-success">
+                {{ userContent.user.username }}
+              </span>
               -
               {{ userContent.emoji }}
             </p>

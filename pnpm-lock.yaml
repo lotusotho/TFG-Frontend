@@ -9177,6 +9177,7 @@ packages:
       katex: 0.16.0
       luxon: 3.5.0
       marked: 15.0.0
+      mermaid: 11.4.1
       ngx-cookie-service: 19.0.0(@angular/common@18.2.13)(@angular/core@18.2.13)
       ngx-markdown: 19.0.0(@angular/common@18.2.13)(@angular/core@18.2.13)(@angular/platform-browser@18.2.13)(marked@15.0.0)(rxjs@7.8.1)(zone.js@0.14.10)
       ngx-typed-writer: 1.4.0(@angular/common@18.2.13)(@angular/core@18.2.13)
