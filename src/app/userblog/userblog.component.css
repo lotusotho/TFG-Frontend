@@ -1,0 +1,13 @@
+@media screen and (max-width: 768px) {
+  .userblog-container {
+    .title.is-1 {
+      font-size: 2rem !important;
+    }
+    .subtitle {
+      font-size: 1rem !important;
+    }
+    .content {
+      font-size: 0.9rem !important;
+    }
+  }
+}
