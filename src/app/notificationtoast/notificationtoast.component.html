@@ -1,32 +1,42 @@
 <div [ngSwitch]="notificationType">
-  <div *ngSwitchCase="'verify'" class="notification is-success">
+  <div *ngSwitchCase="'verify'" class="notification is-warning">
     <button class="delete"></button>
-    Se debe verificar el correo de la cuenta.
+    📧 Se debe verificar el correo de la cuenta.
   </div>
 
   <div *ngSwitchCase="'verified'" class="notification is-success">
     <button class="delete"></button>
-    Se ha verificado el correo de la cuenta.
+    ✅ Se ha verificado el correo de la cuenta.
   </div>
 
   <div *ngSwitchCase="'changed'" class="notification is-info">
     <button class="delete"></button>
-    Se ha cambiado la contraseña.
+    🔒 Se ha cambiado la contraseña.
   </div>
 
   <div *ngSwitchCase="'blogUpload'" class="notification is-success">
     <button class="delete"></button>
-    Se ha subido el contenido del blog.
+    📤 Se ha subido el contenido del blog.
   </div>
 
   <div *ngSwitchCase="'blogDelete'" class="notification is-success">
     <button class="delete"></button>
-    Se ha borrado el contenido del blog.
+    🗑️ Se ha borrado el contenido del blog.
+  </div>
+
+  <div *ngSwitchCase="'blogNotFound'" class="notification is-danger">
+    <button class="delete"></button>
+    ❌ ¡Oh no! Parece que tienes un blog vacio... ¡Hora de escribir algo 🖊️!
+  </div>
+
+  <div *ngSwitchCase="'login'" class="notification is-success">
+    <button class="delete"></button>
+    👋 Acabas de iniciar sesión. ¡Hola!
   </div>
 
   <div *ngSwitchCase="'logout'" class="notification is-success">
     <button class="delete"></button>
-    Has cerrado sesión correctamente. ¡Adiós 👋!
+    👋 Has cerrado sesión correctamente. ¡Adiós!
   </div>
 
   <div *ngSwitchDefault></div>

@@ -62,6 +62,11 @@ export class UsersettingsComponent implements OnInit {
     const postid = this.userContent.ID;
     const headers = this.authService.getAuthHeaders();
 
+    if (postid === undefined) {
+      this.notificationType = 'blogNotFound';
+      return;
+    }
+
     this.contentService
       .deletePost(postid, { headers, withCredentials: true })
       .subscribe({

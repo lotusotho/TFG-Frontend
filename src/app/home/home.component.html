@@ -7,12 +7,11 @@
       <p class="subtitle">
         Exprésate de manera sencilla y rápida con tu propio miniblog.
         <br />
-        Crea publicaciones usando solo <strong>Markdown</strong> y obtén un
-        subdominio exclusivo basado en tu nombre de usuario:
+        Crea publicaciones usando solo <strong>Markdown</strong>
         <br />
         <br />
         <code class="title is-3 has-text-danger">
-          <ngx-typed-writer
+          blog.mapach.es/userblog?blog=<ngx-typed-writer
             class="typewriter has-text-light"
             [strings]="usernames"
             [shuffle]="true"
@@ -20,11 +19,15 @@
             [backSpeed]="20"
             [typeSpeed]="40"
           >
-          </ngx-typed-writer
-          >.mapach.es
+          </ngx-typed-writer>
         </code>
       </p>
-      <a class="title is-4 button is-primary m-4">Crear Nuevo Post</a>
+      <a
+        class="title is-4 button is-primary m-4"
+        [routerLink]="['/signup']"
+        routerLinkActive="router-link-active"
+        >Crear Nuevo Blog</a
+      >
     </div>
   </div>
 </section>

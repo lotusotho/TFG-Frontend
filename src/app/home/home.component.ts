@@ -3,11 +3,17 @@ import { MarkdownModule } from 'ngx-markdown';
 import { NgxTypedWriterModule } from 'ngx-typed-writer';
 import { faker } from '@faker-js/faker';
 import { FeaturedpostComponent } from '../featuredpost/featuredpost.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MarkdownModule, NgxTypedWriterModule, FeaturedpostComponent],
+  imports: [
+    MarkdownModule,
+    NgxTypedWriterModule,
+    FeaturedpostComponent,
+    RouterLink,
+  ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   preserveWhitespaces: true,
