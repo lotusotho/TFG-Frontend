@@ -9,7 +9,7 @@
     ✅ Se ha verificado el correo de la cuenta.
   </div>
 
-  <div *ngSwitchCase="'changed'" class="notification is-info">
+  <div *ngSwitchCase="'changed'" class="notification is-success">
     <button class="delete"></button>
     🔒 Se ha cambiado la contraseña.
   </div>
@@ -49,13 +49,16 @@
     ❌ Usuario o contraseña incorrectos.
   </div>
 
-  <div *ngSwitchCase="'registrationSuccess'" class="notification is-info">
+  <div *ngSwitchCase="'registrationSuccess'" class="notification is-success">
     <button class="delete"></button>
     🎉 Te has registrado correctamente, ahora mira tu correo y haz click en el
     enlace para confirmar tu cuenta.
   </div>
 
-  <div *ngSwitchCase="'passwordRecoverySuccess'" class="notification is-info">
+  <div
+    *ngSwitchCase="'passwordRecoverySuccess'"
+    class="notification is-success"
+  >
     <button class="delete"></button>
     💌 Se ha enviado el correo de recuperación de contraseña.
   </div>
