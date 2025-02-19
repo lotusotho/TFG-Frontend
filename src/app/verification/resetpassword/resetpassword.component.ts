@@ -44,7 +44,7 @@ export class ResetpasswordComponent {
         return;
       }
 
-      this.authService.resetPassword(this.token, newPassword).subscribe({
+      this.authService.resetPassword(this.token, newPassword.toLowerCase().trim()).subscribe({
         next: (response) => {
           console.log('Password reset successful', response);
           this.notificationType = 'changed';
