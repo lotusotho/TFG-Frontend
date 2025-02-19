@@ -55,5 +55,10 @@
     enlace para confirmar tu cuenta.
   </div>
 
+  <div *ngSwitchCase="'passwordRecoverySuccess'" class="notification is-info">
+    <button class="delete"></button>
+    💌 Se ha enviado el correo de recuperación de contraseña.
+  </div>
+
   <div *ngSwitchDefault></div>
 </div>

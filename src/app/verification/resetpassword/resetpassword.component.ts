@@ -44,18 +44,20 @@ export class ResetpasswordComponent {
         return;
       }
 
-      this.authService.resetPassword(this.token, newPassword.toLowerCase().trim()).subscribe({
-        next: (response) => {
-          console.log('Password reset successful', response);
-          this.notificationType = 'changed';
-          setTimeout(() => {
-            this.router.navigate(['/login']);
-          }, 2 * 1000);
-        },
-        error: (error) => {
-          console.error('Password reset failed', error);
-        },
-      });
+      this.authService
+        .resetPassword(this.token, newPassword.toLowerCase().trim())
+        .subscribe({
+          next: (response) => {
+            console.log('Password reset successful', response);
+            this.notificationType = 'changed';
+            setTimeout(() => {
+              this.router.navigate(['/login']);
+            }, 2000);
+          },
+          error: (error) => {
+            console.error('Password reset failed', error);
+          },
+        });
     }
   }
 }
