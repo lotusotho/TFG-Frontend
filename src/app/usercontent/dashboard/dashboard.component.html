@@ -1,5 +1,10 @@
 <div class="m-4">
   <div class="container is-widescreen">
+    <div *ngIf="notificationType">
+      <app-notificationtoast
+        [notificationType]="notificationType"
+      ></app-notificationtoast>
+    </div>
     <h1 class="title is-1">
       {{ current_phrase }} {{ username.charAt(0).toUpperCase()
       }}{{ username.slice(1) }}:
@@ -119,13 +124,6 @@
           [disabled]="formContent.invalid"
         >
           Subir
-        </button>
-        <button
-          class="button title is-4 is-danger has-text-black"
-          type="button"
-          (click)="deletePost()"
-        >
-          Borrar Blog
         </button>
       </div>
     </form>

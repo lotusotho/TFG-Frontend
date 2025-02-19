@@ -1,0 +1,17 @@
+<section class="section">
+  <div *ngIf="notificationType">
+    <app-notificationtoast
+      [notificationType]="notificationType"
+    ></app-notificationtoast>
+  </div>
+  <div class="container">
+    <h1 class="title is-1">Configuración del Usuario</h1>
+    <p class="title is-3 has-text-danger">Peligro:</p>
+    <hr class="has-background-danger" />
+    <div class="has-text-centered">
+      <button class="title is-4 has-text-black button is-danger">
+        Borrar Blog
+      </button>
+    </div>
+  </div>
+</section>

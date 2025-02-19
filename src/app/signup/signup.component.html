@@ -1,5 +1,10 @@
 <div class="container is-widescreen p-5">
   <p class="title is-1">Regístrate:</p>
+  <div *ngIf="notificationType">
+    <app-notificationtoast
+      [notificationType]="notificationType"
+    ></app-notificationtoast>
+  </div>
   <form [formGroup]="signupForm">
     <div class="field">
       <label class="label">Username</label>

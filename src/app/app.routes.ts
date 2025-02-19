@@ -7,13 +7,14 @@ import { DashboardComponent } from './usercontent/dashboard/dashboard.component.
 import { MdinfoComponent } from './mdinfo/mdinfo.component.js';
 import { FooterComponent } from './footer/footer.component.js';
 import { AuthGuard } from './guards/auth.guard.js';
-import { UserblogComponent } from './userblog/userblog.component.js';
+import { UserblogComponent } from './usercontent/userblog/userblog.component.js';
 import { VerifyaccountComponent } from './verification/verifyaccount/verifyaccount.component.js';
 import { ResetpasswordComponent } from './verification/resetpassword/resetpassword.component.js';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component.js';
 import { AllpostsComponent } from './allposts/allposts.component.js';
 import { NotverifiedComponent } from './notverified/notverified.component.js';
 import { VerifiedGuard } from './guards/verified.guard.js';
+import { UsersettingsComponent } from './usercontent/usersettings/usersettings.component.js';
 
 export const routes: Routes = [
   {
@@ -49,6 +50,10 @@ export const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent,
+      },
+      {
+        path: 'settings',
+        component: UsersettingsComponent,
       },
       {
         path: 'mdinfo',

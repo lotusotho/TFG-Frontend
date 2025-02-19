@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 import { ContentService } from '../../services/content.service';
 import { AuthService } from '../../services/auth.service.js';
 import { NgClass, NgIf } from '@angular/common';
-import { response } from 'express';
+import { NotificationtoastComponent } from '../../notificationtoast/notificationtoast.component.js';
 
 @Component({
   selector: 'app-dashboard',
@@ -25,6 +25,7 @@ import { response } from 'express';
     PickerModule,
     NgIf,
     NgClass,
+    NotificationtoastComponent,
   ],
   providers: [MarkdownService],
   templateUrl: './dashboard.component.html',
@@ -38,6 +39,7 @@ export class DashboardComponent implements OnInit {
   current_phrase: string = '';
   selectedEmoji: string = '';
   showEmojiPicker: boolean = false;
+  notificationType: string | null = null;
 
   phrases: string[] = [
     '¿Qué se te ocurre hoy?',
@@ -88,6 +90,8 @@ export class DashboardComponent implements OnInit {
         .subscribe({
           next: (response) => {
             console.log('Content posted', response);
+            this.notificationType = 'blogUpload';
+
             this.router.navigate(['/userblog'], {
               queryParams: { blog: this.username.toLowerCase().trim() },
             });
@@ -132,22 +136,6 @@ export class DashboardComponent implements OnInit {
         },
         error: (error) => {
           console.error('Error fetching secure data:', error);
-        },
-      });
-  }
-
-  deletePost() {
-    const postid = this.userContent.ID;
-    const headers = this.authService.getAuthHeaders();
-
-    this.contentService
-      .deletePost(postid, { headers, withCredentials: true })
-      .subscribe({
-        next: (response: any) => {
-          console.log(response);
-        },
-        error: (error) => {
-          console.error(error);
         },
       });
   }

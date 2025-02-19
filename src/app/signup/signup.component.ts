@@ -9,16 +9,24 @@ import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service.js';
+import { NotificationtoastComponent } from '../notificationtoast/notificationtoast.component.js';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [FormsModule, NgIf, ReactiveFormsModule, RouterLink],
+  imports: [
+    FormsModule,
+    NgIf,
+    ReactiveFormsModule,
+    RouterLink,
+    NotificationtoastComponent,
+  ],
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent {
   signupForm: FormGroup;
+  notificationType: string | null = null;
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
     this.signupForm = this.fb.group({
@@ -48,6 +56,8 @@ export class SignupComponent {
       this.authService.register(formData).subscribe({
         next: (response) => {
           console.log('Signup successful', response);
+          this.notificationType = 'verify';
+
           this.authService
             .sendVerificationEmail({
               username: formData.username,

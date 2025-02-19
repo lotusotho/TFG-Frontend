@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ContentService } from '../services/content.service';
+import { ContentService } from '../../services/content.service';
 import { MarkdownModule } from 'ngx-markdown';
 import { DatePipe, NgIf } from '@angular/common';
 

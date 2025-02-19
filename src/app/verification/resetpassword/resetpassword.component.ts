@@ -8,17 +8,19 @@ import {
 import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
+import { NotificationtoastComponent } from '../../notificationtoast/notificationtoast.component.js';
 
 @Component({
   selector: 'app-resetpassword',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf, RouterLink],
+  imports: [ReactiveFormsModule, NgIf, RouterLink, NotificationtoastComponent],
   templateUrl: './resetpassword.component.html',
   styleUrls: ['./resetpassword.component.css'],
 })
 export class ResetpasswordComponent {
   resetPasswordForm: FormGroup;
   token: string;
+  notificationType: string | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -45,6 +47,7 @@ export class ResetpasswordComponent {
       this.authService.resetPassword(this.token, newPassword).subscribe({
         next: (response) => {
           console.log('Password reset successful', response);
+          this.notificationType = 'changed';
           setTimeout(() => {
             this.router.navigate(['/login']);
           }, 2 * 1000);
