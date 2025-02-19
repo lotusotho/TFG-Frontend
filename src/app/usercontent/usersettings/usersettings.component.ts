@@ -62,7 +62,7 @@ export class UsersettingsComponent implements OnInit {
     const postid = this.userContent.ID;
     const headers = this.authService.getAuthHeaders();
 
-    if (postid === undefined) {
+    if (!postid) {
       this.notificationType = 'blogNotFound';
       return;
     }
