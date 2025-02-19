@@ -58,6 +58,7 @@
         <div class="navbar-item">
           <div class="buttons">
             <a
+              *ngIf="isAuthenticated"
               class="navbar-item button has-background-dark"
               [routerLink]="['/settings']"
               routerLinkActive="router-link-active"

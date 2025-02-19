@@ -54,6 +54,7 @@ export const routes: Routes = [
       {
         path: 'settings',
         component: UsersettingsComponent,
+        canActivate: [AuthGuard, VerifiedGuard],
       },
       {
         path: 'mdinfo',
