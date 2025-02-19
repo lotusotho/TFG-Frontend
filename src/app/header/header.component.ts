@@ -11,6 +11,7 @@ import {
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from '../services/auth.service.js';
 import { NotificationtoastComponent } from '../notificationtoast/notificationtoast.component.js';
+import { ContentService } from '../services/content.service.js';
 
 @Component({
   selector: 'app-header',
@@ -22,15 +23,16 @@ import { NotificationtoastComponent } from '../notificationtoast/notificationtoa
 export class HeaderComponent implements OnInit {
   isAuthenticated: boolean = false;
   notificationType: string | null = null;
+  username = '';
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
     private authService: AuthService,
+    private contentService: ContentService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    // TODO: Arreglar esto
     if (isPlatformBrowser(this.platformId)) {
       this.authService.checkLogin();
     }
@@ -38,6 +40,20 @@ export class HeaderComponent implements OnInit {
     this.authService.isLoggedIn$.subscribe((status) => {
       this.isAuthenticated = status;
     });
+  }
+
+  getUsernameByToken() {
+    const headers = this.authService.getAuthHeaders();
+    this.contentService
+      .getUsernameByToken({ headers, withCredentials: true })
+      .subscribe({
+        next: (response: any) => {
+          this.username = response.username as string;
+        },
+        error: (error) => {
+          console.error('Error fetching secure data:', error);
+        },
+      });
   }
 
   logOut() {

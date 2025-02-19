@@ -70,6 +70,9 @@
             >
               Configuración de Usuario
             </a>
+            <p *ngIf="isAuthenticated" class="has-text-white">
+              Hola, <b class="has-text-primary">{{ username }}</b>
+            </p>
             <a
               class="navbar-item button is-ghost"
               [routerLink]="['/mdinfo']"
