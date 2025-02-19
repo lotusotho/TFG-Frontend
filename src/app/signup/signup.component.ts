@@ -10,7 +10,7 @@ import { NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service.js';
 import { NotificationtoastComponent } from '../notificationtoast/notificationtoast.component.js';
-import emojiRegex from 'emoji-regex';
+import emojiRegex from '../../utils/emojiRegex.js';
 
 @Component({
   selector: 'app-signup',
@@ -37,7 +37,7 @@ export class SignupComponent {
           Validators.required,
           Validators.minLength(5),
           Validators.maxLength(15),
-          Validators.pattern(emojiRegex()),
+          Validators.pattern(emojiRegex),
         ],
       ],
       email: [
