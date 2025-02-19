@@ -56,6 +56,9 @@ importers:
       clipboard:
         specifier: 2.0.11
         version: 2.0.11
+      emoji-regex:
+        specifier: ^10.4.0
+        version: 10.4.0
       emoji-toolkit:
         specifier: 9.0.0
         version: 9.0.0

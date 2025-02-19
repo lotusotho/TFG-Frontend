@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service.js';
+import emojiRegex from 'emoji-regex';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +29,7 @@ export class LoginComponent {
           Validators.required,
           Validators.minLength(5),
           Validators.maxLength(15),
-          Validators.pattern(/[\p{Emoji}]/u),
+          Validators.pattern(emojiRegex()),
         ],
       ],
       password: ['', [Validators.required, Validators.minLength(5)]],
