@@ -4,7 +4,29 @@
     <p class="title is-4">
       ¡Mira los blogs que han escrito todos los usuarios de la plataforma!
     </p>
-    <div class="box m-4" *ngFor="let post of allPostsData; let i = index">
+
+    <div class="field has-addons is-centered m-4">
+      <div class="control has-icons-left">
+        <input
+          class="input"
+          type="text"
+          placeholder="Buscar blogs..."
+          aria-label="Buscar blogs"
+          [(ngModel)]="searchQuery"
+          (input)="filterPosts()"
+        />
+        <span class="icon is-left">
+          <i class="fas fa-search"></i>
+        </span>
+      </div>
+      <div class="control">
+        <button class="button is-info" (click)="filterPosts()">
+          Buscar Blogs
+        </button>
+      </div>
+    </div>
+
+    <div class="box m-4" *ngFor="let post of filteredPosts; let i = index">
       <div class="container">
         <p class="title is-2">
           <span class="has-text-success">{{ post.user.username }}</span> -
