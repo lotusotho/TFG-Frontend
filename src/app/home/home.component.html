@@ -2,7 +2,14 @@
   <div class="hero-body">
     <div class="container has-text-centered">
       <p class="title">
-        🦝 Bienvenido a Mapach.es – Tu miniblog minimalista en Markdown 🦝
+        🦝 Bienvenido a Mapach.es – Tu miniblog minimalista en
+        <u>Markdown</u> 🦝
+        <a
+          class="title is-2 button is-success m-5"
+          [routerLink]="['/blogs']"
+          routerLinkActive="router-link-active"
+          >Ver Blogs</a
+        >
       </p>
       <p class="subtitle">
         Exprésate de manera sencilla y rápida con tu propio miniblog.
@@ -23,7 +30,7 @@
         </code>
       </p>
       <a
-        class="title is-4 button is-primary m-4"
+        class="title is-4 button is-primary m-5"
         [routerLink]="['/signup']"
         routerLinkActive="router-link-active"
         >Crear Nuevo Blog</a
