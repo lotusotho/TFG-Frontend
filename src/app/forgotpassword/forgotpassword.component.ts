@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { NgIf } from '@angular/common';
+import { emailRegex } from '../../utils/validatorsRegex.js';
 
 @Component({
   selector: 'app-forgotpassword',
@@ -21,15 +22,7 @@ export class ForgotpasswordComponent {
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
     this.forgotPasswordForm = this.fb.group({
-      email: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern(
-            /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/m
-          ),
-        ],
-      ],
+      email: ['', [Validators.required, Validators.pattern(emailRegex)]],
     });
   }
 
