@@ -61,4 +61,16 @@ export class ContentService {
   getAllPosts() {
     return this.http.get(`${this.API_URL}/posts`);
   }
+
+  deletePost(
+    postid: string,
+    options?: {
+      headers: HttpHeaders;
+      withCredentials: boolean;
+    }
+  ): Observable<any> {
+    return this.http.delete(`${this.API_URL}/post/${postid}`, {
+      ...options,
+    });
+  }
 }

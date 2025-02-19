@@ -112,13 +112,20 @@
         </p>
       </div>
 
-      <div class="has-text-centered">
+      <div class="buttons has-text-centered">
         <button
           class="button title is-2 is-primary has-text-black"
           type="submit"
           [disabled]="formContent.invalid"
         >
           Subir
+        </button>
+        <button
+          class="button title is-4 is-danger has-text-black"
+          type="button"
+          (click)="deletePost()"
+        >
+          Borrar Blog
         </button>
       </div>
     </form>

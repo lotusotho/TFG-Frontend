@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 import { ContentService } from '../../services/content.service';
 import { AuthService } from '../../services/auth.service.js';
 import { NgClass, NgIf } from '@angular/common';
+import { response } from 'express';
 
 @Component({
   selector: 'app-dashboard',
@@ -87,7 +88,9 @@ export class DashboardComponent implements OnInit {
         .subscribe({
           next: (response) => {
             console.log('Content posted', response);
-this.router.navigate(['/userblog'], { queryParams: { blog: this.username.toLowerCase().trim() } });
+            this.router.navigate(['/userblog'], {
+              queryParams: { blog: this.username.toLowerCase().trim() },
+            });
           },
           error: (error) => {
             console.error('Error posting content:', error);
@@ -129,6 +132,22 @@ this.router.navigate(['/userblog'], { queryParams: { blog: this.username.toLower
         },
         error: (error) => {
           console.error('Error fetching secure data:', error);
+        },
+      });
+  }
+
+  deletePost() {
+    const postid = this.userContent.ID;
+    const headers = this.authService.getAuthHeaders();
+
+    this.contentService
+      .deletePost(postid, { headers, withCredentials: true })
+      .subscribe({
+        next: (response: any) => {
+          console.log(response);
+        },
+        error: (error) => {
+          console.error(error);
         },
       });
   }
