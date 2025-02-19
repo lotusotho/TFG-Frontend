@@ -1,5 +1,5 @@
 <div [ngSwitch]="notificationType">
-  <div *ngSwitchCase="'verify'" class="notification is-warning">
+  <div *ngSwitchCase="'verify'" class="notification is-success">
     <button class="delete"></button>
     Se debe verificar el correo de la cuenta.
   </div>
@@ -19,7 +19,7 @@
     Se ha subido el contenido del blog.
   </div>
 
-  <div *ngSwitchCase="'blogDelete'" class="notification is-danger">
+  <div *ngSwitchCase="'blogDelete'" class="notification is-success">
     <button class="delete"></button>
     Se ha borrado el contenido del blog.
   </div>
