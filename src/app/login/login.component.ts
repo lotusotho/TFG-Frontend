@@ -22,7 +22,14 @@ export class LoginComponent {
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(5)]],
+      username: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(15),
+        ],
+      ],
       password: ['', [Validators.required, Validators.minLength(5)]],
     });
   }

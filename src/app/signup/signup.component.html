@@ -30,11 +30,20 @@
         <p
           class="help is-danger"
           *ngIf="
-            signupForm.get('username')?.invalid &&
+            signupForm.get('username')?.errors?.['required'] &&
             signupForm.get('username')?.touched
           "
         >
           Please enter a valid username.
+        </p>
+        <p
+          class="help is-danger"
+          *ngIf="
+            signupForm.get('username')?.errors?.['maxlength'] &&
+            signupForm.get('username')?.touched
+          "
+        >
+          Username cannot be more than 15 characters.
         </p>
       </div>
     </div>
