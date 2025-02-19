@@ -20,7 +20,11 @@ export class AllpostsComponent implements OnInit {
   getPosts() {
     this.contentService.getAllPosts().subscribe({
       next: (response: any) => {
-        this.allPostsData = response.data;
+        this.allPostsData = response.data.sort(
+          (a: any, b: any) =>
+            new Date(b.date_updated).getTime() -
+            new Date(a.date_updated).getTime()
+        );
       },
       error: (error: any) => {
         console.log('Error getting all posts', error);
