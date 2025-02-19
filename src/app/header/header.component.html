@@ -1,4 +1,9 @@
 <div class="hero-head">
+  <div *ngIf="notificationType">
+    <app-notificationtoast
+      [notificationType]="notificationType"
+    ></app-notificationtoast>
+  </div>
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a

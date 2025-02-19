@@ -24,5 +24,10 @@
     Se ha borrado el contenido del blog.
   </div>
 
+  <div *ngSwitchCase="'logout'" class="notification is-success">
+    <button class="delete"></button>
+    Has cerrado sesión correctamente. ¡Adiós 👋!
+  </div>
+
   <div *ngSwitchDefault></div>
 </div>

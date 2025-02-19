@@ -10,16 +10,18 @@ import {
 } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from '../services/auth.service.js';
+import { NotificationtoastComponent } from '../notificationtoast/notificationtoast.component.js';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, RouterOutlet, NgIf],
+  imports: [RouterLink, RouterOutlet, NgIf, NotificationtoastComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
 export class HeaderComponent implements OnInit {
   isAuthenticated: boolean = false;
+  notificationType: string | null = null;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
@@ -40,6 +42,7 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     this.authService.logout();
+    this.notificationType = 'logout';
     this.router.navigate(['/home']);
   }
 
