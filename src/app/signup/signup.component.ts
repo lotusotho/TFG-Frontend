@@ -61,7 +61,6 @@ export class SignupComponent {
       this.authService.register(formData).subscribe({
         next: (response) => {
           console.log('Signup successful', response);
-          this.notificationType = 'verify';
 
           this.authService
             .sendVerificationEmail({

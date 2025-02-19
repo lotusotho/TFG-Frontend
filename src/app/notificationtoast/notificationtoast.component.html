@@ -1,9 +1,4 @@
 <div [ngSwitch]="notificationType">
-  <div *ngSwitchCase="'verify'" class="notification is-warning">
-    <button class="delete"></button>
-    📧 Se debe verificar el correo de la cuenta.
-  </div>
-
   <div *ngSwitchCase="'verified'" class="notification is-success">
     <button class="delete"></button>
     ✅ Se ha verificado el correo de la cuenta.
