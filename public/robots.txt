@@ -42,5 +42,5 @@ User-agent: YouBot
 Disallow: /
 User-agent: *
 Allow: /
-Sitemap: https://mapach.es/sitemap.xml
-Host: https://mapach.es
+Sitemap: https://blog.mapach.es/sitemap.xml
+Host: https://blog.mapach.es
