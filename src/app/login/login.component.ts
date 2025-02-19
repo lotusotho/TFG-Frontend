@@ -63,7 +63,7 @@ export class LoginComponent {
             this.notificationType = 'login';
             setTimeout(() => {
               this.router.navigate(['/home']);
-            }, 2000);
+            }, 500);
           },
           error: (error) => {
             console.error('Login failed', error);

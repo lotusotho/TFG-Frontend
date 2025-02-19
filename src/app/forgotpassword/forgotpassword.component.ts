@@ -44,7 +44,7 @@ export class ForgotpasswordComponent {
 
           setTimeout(() => {
             this.router.navigate(['/login']);
-          }, 2000);
+          }, 500);
         },
         error: (error) => {
           console.error('Failed to send password reset email', error);

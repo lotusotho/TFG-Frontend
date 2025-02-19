@@ -74,7 +74,7 @@ export class SignupComponent {
                 this.notificationType = 'registrationSuccess';
                 setTimeout(() => {
                   this.router.navigate(['/login']);
-                }, 2000);
+                }, 500);
               },
               error: (emailError) => {
                 console.error('Failed to send verification email', emailError);

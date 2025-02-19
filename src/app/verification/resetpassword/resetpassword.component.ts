@@ -52,7 +52,7 @@ export class ResetpasswordComponent {
             this.notificationType = 'changed';
             setTimeout(() => {
               this.router.navigate(['/login']);
-            }, 2000);
+            }, 500);
           },
           error: (error) => {
             console.error('Password reset failed', error);
