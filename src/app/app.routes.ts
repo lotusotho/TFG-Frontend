@@ -37,7 +37,7 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent,
-        canActivate: [AuthGuard, VerifiedGuard],
+        //canActivate: [AuthGuard, VerifiedGuard],
       },
       {
         path: 'userblog',

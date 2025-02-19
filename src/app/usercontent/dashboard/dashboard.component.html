@@ -11,9 +11,7 @@
     </h1>
     <p class="subtitle"></p>
     <form [formGroup]="formContent" (ngSubmit)="postContent()">
-      <!-- Fila para título y emoji -->
       <div class="columns is-vcentered">
-        <!-- Campo de Título -->
         <div class="column is-10">
           <div class="field">
             <label class="label">Título</label>
@@ -41,7 +39,6 @@
             </p>
           </div>
         </div>
-        <!-- Recuadro para seleccionar Emoji -->
         <div class="column is-2">
           <div class="field">
             <label class="label">Emoji</label>
@@ -73,7 +70,6 @@
         </div>
       </div>
 
-      <!-- Modal de Emoji (Bulma) centrado -->
       <div class="modal" [ngClass]="{ 'is-active': showEmojiPicker }">
         <div class="modal-background" (click)="toggleEmojiPicker()"></div>
         <div class="modal-content" style="margin: auto">
@@ -92,7 +88,6 @@
         ></button>
       </div>
 
-      <!-- Campo de contenido -->
       <div class="field">
         <textarea
           id="text_content"
@@ -127,5 +122,10 @@
         </button>
       </div>
     </form>
+  </div>
+  <div class="has-text-centered m-4">
+    <a href="https://catbox.moe/" target="_blank" class="button is-dark">
+      ¿Quieres subir imágenes, gifs, etc? ¡Puedes usar un enlace de Catbox.moe!
+    </a>
   </div>
 </div>

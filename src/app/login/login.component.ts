@@ -10,16 +10,24 @@ import { NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service.js';
 import { usernameRegex } from '../../utils/validatorsRegex.js';
+import { NotificationtoastComponent } from '../notificationtoast/notificationtoast.component.js';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, NgIf, ReactiveFormsModule, RouterLink],
+  imports: [
+    FormsModule,
+    NgIf,
+    ReactiveFormsModule,
+    RouterLink,
+    NotificationtoastComponent,
+  ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  notificationType: string | null = null;
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
     this.loginForm = this.fb.group({
@@ -48,9 +56,16 @@ export class LoginComponent {
         .subscribe({
           next: (response) => {
             console.log('Login successful', response);
+            this.notificationType = 'login';
           },
           error: (error) => {
             console.error('Login failed', error);
+            if (
+              error.status === 401 &&
+              error.message === 'Invalid Credentials'
+            ) {
+              this.notificationType = 'loginError';
+            }
           },
         });
     } else {

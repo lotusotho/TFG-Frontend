@@ -75,6 +75,9 @@ export class SignupComponent {
         },
         error: (error) => {
           console.error('Signup failed', error);
+          if (error.status === 500 && error.error === 'User already exists') {
+            this.notificationType = 'userExists';
+          }
         },
       });
     }

@@ -29,6 +29,11 @@
     ❌ ¡Oh no! Parece que tienes un blog vacio... ¡Hora de escribir algo 🖊️!
   </div>
 
+  <div *ngSwitchCase="'userExists'" class="notification is-danger">
+    <button class="delete"></button>
+    ❌ El usuario ya existe.
+  </div>
+
   <div *ngSwitchCase="'login'" class="notification is-success">
     <button class="delete"></button>
     👋 Acabas de iniciar sesión. ¡Hola!
@@ -37,6 +42,11 @@
   <div *ngSwitchCase="'logout'" class="notification is-success">
     <button class="delete"></button>
     👋 Has cerrado sesión correctamente. ¡Adiós!
+  </div>
+
+  <div *ngSwitchCase="'loginError'" class="notification is-danger">
+    <button class="delete"></button>
+    ❌ Usuario o contraseña incorrectos.
   </div>
 
   <div *ngSwitchDefault></div>
