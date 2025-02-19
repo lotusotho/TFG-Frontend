@@ -35,7 +35,7 @@ export class ForgotpasswordComponent {
 
   onSubmit() {
     if (this.forgotPasswordForm.valid) {
-      const email = this.forgotPasswordForm.value['email'];
+      const email = this.forgotPasswordForm.value['email'].toLowerCase().trim();
       this.authService.sendPasswordResetEmail(email).subscribe({
         next: (response) => {
           console.log('Password reset email sent', response);
