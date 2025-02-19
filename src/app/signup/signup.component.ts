@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service.js';
 import { NotificationtoastComponent } from '../notificationtoast/notificationtoast.component.js';
 import { emailRegex, usernameRegex } from '../../utils/validatorsRegex.js';
@@ -29,7 +29,11 @@ export class SignupComponent {
   signupForm: FormGroup;
   notificationType: string | null = null;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
     this.signupForm = this.fb.group({
       username: [
         '',
@@ -67,6 +71,8 @@ export class SignupComponent {
             .subscribe({
               next: (emailResponse) => {
                 console.log('Verification email sent', emailResponse);
+                this.notificationType = 'registrationSuccess';
+                this.router.navigate(['/login']);
               },
               error: (emailError) => {
                 console.error('Failed to send verification email', emailError);
@@ -75,7 +81,7 @@ export class SignupComponent {
         },
         error: (error) => {
           console.error('Signup failed', error);
-          if (error.status === 500 && error.error === 'User already exists') {
+          if (error.status === 500) {
             this.notificationType = 'userExists';
           }
         },

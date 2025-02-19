@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service.js';
 import { usernameRegex } from '../../utils/validatorsRegex.js';
 import { NotificationtoastComponent } from '../notificationtoast/notificationtoast.component.js';
@@ -29,7 +29,11 @@ export class LoginComponent {
   loginForm: FormGroup;
   notificationType: string | null = null;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
     this.loginForm = this.fb.group({
       username: [
         '',
@@ -57,13 +61,11 @@ export class LoginComponent {
           next: (response) => {
             console.log('Login successful', response);
             this.notificationType = 'login';
+            this.router.navigate(['/home']);
           },
           error: (error) => {
             console.error('Login failed', error);
-            if (
-              error.status === 401 &&
-              error.message === 'Invalid Credentials'
-            ) {
+            if (error.status === 401) {
               this.notificationType = 'loginError';
             }
           },
