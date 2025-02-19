@@ -2,13 +2,13 @@
   <p class="title is-1">Inicia sesión:</p>
   <form [formGroup]="loginForm">
     <div class="field">
-      <label class="label">Username</label>
+      <label class="label">Nombre de usuario</label>
       <div class="control has-icons-left has-icons-right">
         <input
           class="input"
           type="text"
           formControlName="username"
-          placeholder="Username input"
+          placeholder="Nombre de usuario"
         />
         <span class="icon is-small is-left">
           <i class="fas fa-envelope"></i>
@@ -29,7 +29,7 @@
             loginForm.get('username')?.touched
           "
         >
-          Please enter a valid username.
+          Por favor, introduce un nombre de usuario válido.
         </p>
         <p
           class="help is-danger"
@@ -38,19 +38,28 @@
             loginForm.get('username')?.touched
           "
         >
-          Username cannot be more than 15 characters.
+          El nombre de usuario no puede tener más de 15 caracteres.
+        </p>
+        <p
+          class="help is-danger"
+          *ngIf="
+            loginForm.get('username')?.errors?.['pattern'] &&
+            loginForm.get('username')?.touched
+          "
+        >
+          El nombre de usuario no puede contener emojis.
         </p>
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Password</label>
+      <label class="label">Contraseña</label>
       <div class="control has-icons-left has-icons-right">
         <input
           class="input"
           type="password"
           formControlName="password"
-          placeholder="Password input"
+          placeholder="Contraseña"
         />
         <span class="icon is-small is-left">
           <i class="fas fa-lock"></i>
@@ -71,7 +80,7 @@
             loginForm.get('password')?.touched
           "
         >
-          Password must be at least 5 characters.
+          La contraseña debe tener al menos 5 caracteres.
         </p>
       </div>
     </div>

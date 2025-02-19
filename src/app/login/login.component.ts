@@ -28,6 +28,7 @@ export class LoginComponent {
           Validators.required,
           Validators.minLength(5),
           Validators.maxLength(15),
+          Validators.pattern(/[\p{Emoji}]/u),
         ],
       ],
       password: ['', [Validators.required, Validators.minLength(5)]],

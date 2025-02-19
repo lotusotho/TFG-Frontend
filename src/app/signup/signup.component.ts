@@ -36,6 +36,7 @@ export class SignupComponent {
           Validators.required,
           Validators.minLength(5),
           Validators.maxLength(15),
+          Validators.pattern(/[\p{Emoji}]/u),
         ],
       ],
       email: [

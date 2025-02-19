@@ -7,13 +7,13 @@
   </div>
   <form [formGroup]="signupForm">
     <div class="field">
-      <label class="label">Username</label>
+      <label class="label">Nombre de usuario</label>
       <div class="control has-icons-left has-icons-right">
         <input
           class="input"
           type="username"
           formControlName="username"
-          placeholder="Username input"
+          placeholder="Nombre de usuario"
         />
         <span class="icon is-small is-left">
           <i class="fas fa-user"></i>
@@ -34,7 +34,7 @@
             signupForm.get('username')?.touched
           "
         >
-          Please enter a valid username.
+          Por favor, introduce un nombre de usuario válido.
         </p>
         <p
           class="help is-danger"
@@ -43,19 +43,28 @@
             signupForm.get('username')?.touched
           "
         >
-          Username cannot be more than 15 characters.
+          El nombre de usuario no puede tener más de 15 caracteres.
+        </p>
+        <p
+          class="help is-danger"
+          *ngIf="
+            signupForm.get('username')?.errors?.['pattern'] &&
+            signupForm.get('username')?.touched
+          "
+        >
+          El nombre de usuario no puede contener emojis.
         </p>
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Email</label>
+      <label class="label">Correo electrónico</label>
       <div class="control has-icons-left has-icons-right">
         <input
           class="input"
           type="email"
           formControlName="email"
-          placeholder="Email input"
+          placeholder="Correo electrónico"
         />
         <span class="icon is-small is-left">
           <i class="fas fa-envelope"></i>
@@ -74,19 +83,19 @@
             signupForm.get('email')?.invalid && signupForm.get('email')?.touched
           "
         >
-          Please enter a valid email.
+          Por favor, introduce un correo electrónico válido.
         </p>
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Password</label>
+      <label class="label">Contraseña</label>
       <div class="control has-icons-left has-icons-right">
         <input
           class="input"
           type="password"
           formControlName="password"
-          placeholder="Password input"
+          placeholder="Contraseña"
         />
         <span class="icon is-small is-left">
           <i class="fas fa-lock"></i>
@@ -107,7 +116,7 @@
             signupForm.get('password')?.touched
           "
         >
-          Password must be at least 6 characters.
+          La contraseña debe tener al menos 6 caracteres.
         </p>
       </div>
     </div>
