@@ -35,6 +35,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.authService.checkLogin();
+      this.getUsernameByToken();
     }
 
     this.authService.isLoggedIn$.subscribe((status) => {
