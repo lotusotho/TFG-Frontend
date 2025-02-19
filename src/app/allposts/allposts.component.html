@@ -6,24 +6,23 @@
       (Desde el más actualizado)
     </p>
 
-    <div class="field has-addons is-centered m-4">
-      <div class="control has-icons-left">
-        <input
-          class="input"
-          type="text"
-          placeholder="Buscar blogs..."
-          aria-label="Buscar blogs"
-          [(ngModel)]="searchQuery"
-          (input)="filterPosts()"
-        />
-        <span class="icon is-left">
-          <i class="fas fa-search"></i>
-        </span>
-      </div>
-      <div class="control">
-        <button class="button is-info" (click)="filterPosts()">
-          Buscar Blogs
-        </button>
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <div class="field has-addons m-4">
+          <div class="control has-icons-left">
+            <input
+              class="input"
+              type="text"
+              placeholder="Buscar blogs..."
+              aria-label="Buscar blogs"
+              [(ngModel)]="searchQuery"
+              (input)="filterPosts()"
+            />
+            <span class="icon is-left">
+              <i class="fas fa-search"></i>
+            </span>
+          </div>
+        </div>
       </div>
     </div>
 
