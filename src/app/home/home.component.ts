@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
     for (let i = 0; i < 10; i++) {
       let username = faker.internet.username();
       if (!username.includes('.')) {
-        this.usernames.push(username);
+        this.usernames.push(username.toLowerCase().trim());
       }
     }
   }
