@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://blog.mapach.es/home</loc>
+  </url>
+  <url>
+    <loc>https://blog.mapach.es/blogs</loc>
+  </url>
+  <url>
+    <loc>https://blog.mapach.es/mdinfo</loc>
+  </url>
+  <url>
+    <loc>https://blog.mapach.es/signup</loc>
+  </url>
+  <url>
+    <loc>https://blog.mapach.es/login</loc>
+  </url>
+  <url>
+    <loc>https://blog.mapach.es/userblog</loc>
+  </url>
+</urlset>
