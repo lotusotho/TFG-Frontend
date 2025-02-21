@@ -16,6 +16,7 @@ export class UsersettingsComponent implements OnInit {
   userContent: any;
   username = '';
   notificationType: string | null = null;
+  showModal: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -59,11 +60,16 @@ export class UsersettingsComponent implements OnInit {
   }
 
   deletePost() {
+    this.showModal = true;
+  }
+
+  confirmDelete() {
     const postid = this.userContent.ID;
     const headers = this.authService.getAuthHeaders();
 
     if (!postid) {
       this.notificationType = 'blogNotFound';
+      this.showModal = false;
       return;
     }
 
@@ -73,10 +79,16 @@ export class UsersettingsComponent implements OnInit {
         next: (response: any) => {
           console.log(response);
           this.notificationType = 'blogDelete';
+          this.showModal = false;
         },
         error: (error) => {
           console.error(error);
+          this.showModal = false;
         },
       });
+  }
+
+  cancelDelete() {
+    this.showModal = false;
   }
 }
