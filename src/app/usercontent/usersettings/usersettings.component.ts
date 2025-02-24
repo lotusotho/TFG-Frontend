@@ -117,7 +117,7 @@ export class UsersettingsComponent implements OnInit {
           this.showModalUserDelete = false;
 
           setTimeout(() => {
-            this.authService.logout();
+            localStorage.removeItem('authToken');
             this.router.navigate(['/home']);
           }, 3000);
         },
