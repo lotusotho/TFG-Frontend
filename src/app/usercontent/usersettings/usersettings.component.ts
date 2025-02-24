@@ -21,7 +21,8 @@ export class UsersettingsComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private contentService: ContentService
+    private contentService: ContentService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -114,6 +115,11 @@ export class UsersettingsComponent implements OnInit {
           console.log(response);
           this.notificationType = 'userDelete';
           this.showModalUserDelete = false;
+
+          setTimeout(() => {
+            this.authService.logout();
+            this.router.navigate(['/home']);
+          }, 3000);
         },
         error: (error) => {
           console.error(error);
