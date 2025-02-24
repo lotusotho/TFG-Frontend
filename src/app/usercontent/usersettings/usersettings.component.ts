@@ -17,6 +17,7 @@ export class UsersettingsComponent implements OnInit {
   username = '';
   notificationType: string | null = null;
   showModal: boolean = false;
+  showModalUserDelete: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -90,5 +91,38 @@ export class UsersettingsComponent implements OnInit {
 
   cancelDelete() {
     this.showModal = false;
+  }
+
+  deleteUser() {
+    this.showModalUserDelete = true;
+  }
+
+  confirmDeleteUser() {
+    const userid = this.userContent.ID;
+    const headers = this.authService.getAuthHeaders();
+
+    if (!userid) {
+      this.notificationType = 'userNotFound';
+      this.showModalUserDelete = false;
+      return;
+    }
+
+    this.authService
+      .deleteUser(userid, { headers, withCredentials: true })
+      .subscribe({
+        next: (response: any) => {
+          console.log(response);
+          this.notificationType = 'userDelete';
+          this.showModalUserDelete = false;
+        },
+        error: (error) => {
+          console.error(error);
+          this.showModalUserDelete = false;
+        },
+      });
+  }
+
+  cancelDeleteUser() {
+    this.showModalUserDelete = false;
   }
 }

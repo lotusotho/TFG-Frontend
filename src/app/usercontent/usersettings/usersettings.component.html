@@ -17,13 +17,22 @@
         Borrar Blog
       </button>
     </div>
+    <div class="has-text-centered" style="margin-top: 1rem">
+      <button
+        class="title is-4 has-text-black button is-warning"
+        type="button"
+        (click)="deleteUser()"
+      >
+        Borrar Usuario
+      </button>
+    </div>
   </div>
 
   <div *ngIf="showModal" class="modal is-active">
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">Confirmar acción</p>
+        <p class="modal-card-title">Confirmar borrar el blog</p>
         <button
           class="delete"
           aria-label="close"
@@ -39,6 +48,32 @@
           Confirmar
         </button>
         <button class="button is-primary" (click)="cancelDelete()">
+          Cancelar
+        </button>
+      </footer>
+    </div>
+  </div>
+
+  <div *ngIf="showModalUserDelete" class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Confirmar eliminación de usuario</p>
+        <button
+          class="delete"
+          aria-label="close"
+          (click)="cancelDeleteUser()"
+        ></button>
+      </header>
+      <section class="modal-card-body">
+        ¿Estás seguro que quieres eliminar tu usuario? Esta acción no se puede
+        deshacer.
+      </section>
+      <footer class="modal-card-foot is-flex buttons">
+        <button class="button is-danger" (click)="confirmDeleteUser()">
+          Confirmar
+        </button>
+        <button class="button is-primary" (click)="cancelDeleteUser()">
           Cancelar
         </button>
       </footer>

@@ -94,4 +94,16 @@ export class AuthService {
       params: { token },
     });
   }
+
+  deleteUser(
+    userid: string,
+    options?: {
+      headers: HttpHeaders;
+      withCredentials: boolean;
+    }
+  ): Observable<any> {
+    return this.httpClient.delete(`${this.API_URL}/user`, {
+      ...options,
+    });
+  }
 }

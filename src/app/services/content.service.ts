@@ -10,7 +10,10 @@ import { AuthService } from './auth.service.js';
 export class ContentService {
   private API_URL = API_URL;
 
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(
+    private httpClient: HttpClient,
+    private authService: AuthService
+  ) {}
 
   postContent(
     title: string,
@@ -19,7 +22,7 @@ export class ContentService {
     md_content: string,
     options?: { headers: HttpHeaders; withCredentials: boolean }
   ): Observable<any> {
-    return this.http.post(
+    return this.httpClient.post(
       `${this.API_URL}/submitcontent`,
       { text_content, md_content, title, emoji },
       options
@@ -30,7 +33,7 @@ export class ContentService {
     headers: HttpHeaders;
     withCredentials: boolean;
   }): Observable<{ username: string }> {
-    return this.http.get<{ username: string }>(
+    return this.httpClient.get<{ username: string }>(
       `${this.API_URL}/tokenusername`,
       options
     );
@@ -43,7 +46,7 @@ export class ContentService {
       withCredentials: boolean;
     }
   ): Observable<{ content: { md_content: string } }> {
-    return this.http.get<{ content: { md_content: string } }>(
+    return this.httpClient.get<{ content: { md_content: string } }>(
       `${this.API_URL}/usercontent`,
       {
         ...options,
@@ -53,13 +56,13 @@ export class ContentService {
   }
 
   getUserContentQuery(blog: string): Observable<{ content: string }> {
-    return this.http.get<{ content: string }>(`${this.API_URL}/posts`, {
+    return this.httpClient.get<{ content: string }>(`${this.API_URL}/posts`, {
       params: { blog },
     });
   }
 
   getAllPosts() {
-    return this.http.get(`${this.API_URL}/posts`);
+    return this.httpClient.get(`${this.API_URL}/posts`);
   }
 
   deletePost(
@@ -69,7 +72,7 @@ export class ContentService {
       withCredentials: boolean;
     }
   ): Observable<any> {
-    return this.http.delete(`${this.API_URL}/post/${postid}`, {
+    return this.httpClient.delete(`${this.API_URL}/post/${postid}`, {
       ...options,
     });
   }
