@@ -24,6 +24,11 @@
     ❌ ¡Oh no! Parece que tienes un blog vacio... ¡Hora de escribir algo 🖊️!
   </div>
 
+  <div *ngSwitchCase="'userDelete'" class="notification is-success">
+    <button class="delete"></button>
+    🚫 Se ha eliminado el usuario correctamente.
+  </div>
+
   <div *ngSwitchCase="'userExists'" class="notification is-danger">
     <button class="delete"></button>
     ❌ El usuario ya existe.

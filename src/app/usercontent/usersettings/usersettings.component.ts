@@ -98,17 +98,17 @@ export class UsersettingsComponent implements OnInit {
   }
 
   confirmDeleteUser() {
-    const userid = this.userContent.ID;
+    const username = this.username;
     const headers = this.authService.getAuthHeaders();
 
-    if (!userid) {
+    if (!username) {
       this.notificationType = 'userNotFound';
       this.showModalUserDelete = false;
       return;
     }
 
     this.authService
-      .deleteUser(userid, { headers, withCredentials: true })
+      .deleteUser(username, { headers, withCredentials: true })
       .subscribe({
         next: (response: any) => {
           console.log(response);
