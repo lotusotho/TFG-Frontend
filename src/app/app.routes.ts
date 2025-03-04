@@ -15,6 +15,7 @@ import { AllpostsComponent } from './allposts/allposts.component.js';
 import { NotverifiedComponent } from './notverified/notverified.component.js';
 import { VerifiedGuard } from './guards/verified.guard.js';
 import { UsersettingsComponent } from './usercontent/usersettings/usersettings.component.js';
+import { TosComponent } from './tos/tos.component.js';
 
 export const routes: Routes = [
   {
@@ -59,6 +60,10 @@ export const routes: Routes = [
       {
         path: 'mdinfo',
         component: MdinfoComponent,
+      },
+      {
+        path: 'tos',
+        component: TosComponent,
       },
     ],
   },
