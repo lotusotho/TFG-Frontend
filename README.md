@@ -2,8 +2,6 @@
 
 Frontend Angular para [blog.mapach.es](https://blog.mapach.es), una plataforma de blogging minimalista que permite crear blogs personales con subdominios únicos usando Markdown. Proyecto final de grado integrado con [TFG Backend API](https://github.com/tu_usuario/TFG-Backend).
 
-![Captura de pantalla home](./public/assets/md/home-preview.png)
-
 ## Características Principales
 - Sistema de autenticación JWT completo (registro/login/recuperación)
 - Editor Markdown integrado con resaltado de código y emojis
