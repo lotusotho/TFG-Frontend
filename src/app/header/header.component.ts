@@ -23,7 +23,7 @@ import { ContentService } from '../services/content.service.js';
 export class HeaderComponent implements OnInit {
   isAuthenticated: boolean = false;
   notificationType: string = '';
-  username: string | null = '';
+  username: string = '';
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
@@ -40,6 +40,12 @@ export class HeaderComponent implements OnInit {
 
     this.authService.isLoggedIn$.subscribe((status) => {
       this.isAuthenticated = status;
+
+      if (status) {
+        this.getUsernameByToken();
+      } else {
+        this.username = '';
+      }
     });
   }
 
