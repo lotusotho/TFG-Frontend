@@ -44,17 +44,7 @@ export class HeaderComponent implements OnInit {
   }
 
   getUsernameByToken() {
-    const headers = this.authService.getAuthHeaders();
-    this.contentService
-      .getUsernameByToken({ headers, withCredentials: true })
-      .subscribe({
-        next: (response: any) => {
-          this.username = response.username as string;
-        },
-        error: (error) => {
-          console.error('Error fetching secure data:', error);
-        },
-      });
+    return this.contentService.getUsernameFromToken();
   }
 
   logOut() {
