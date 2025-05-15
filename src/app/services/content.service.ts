@@ -3,6 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { API_URL } from '../../contants.js';
 import { AuthService } from './auth.service.js';
+import { jwtDecode } from 'jwt-decode';
+
+interface TokenPayload {
+  username: string;
+  type: number;
+  iat: number;
+  exp: number;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -29,14 +37,17 @@ export class ContentService {
     );
   }
 
-  getUsernameByToken(options?: {
-    headers: HttpHeaders;
-    withCredentials: boolean;
-  }): Observable<{ username: string }> {
-    return this.httpClient.get<{ username: string }>(
-      `${this.API_URL}/tokenusername`,
-      options
-    );
+  getUsernameFromToken(): string | null {
+    const token = this.authService.getToken();
+    if (!token) return null;
+
+    try {
+      const decoded = jwtDecode<TokenPayload>(token);
+      return decoded.username;
+    } catch (error) {
+      console.error('Error decoding token', error);
+      return null;
+    }
   }
 
   getUserContent(

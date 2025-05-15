@@ -69,6 +69,10 @@ export class AuthService {
     }
   }
 
+  getToken(): string | null {
+    return localStorage.getItem('authToken');
+  }
+
   sendVerificationEmail(formData: any): Observable<any> {
     return this.httpClient.post(
       `${this.API_URL}/send-verification-email`,

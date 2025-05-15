@@ -104,18 +104,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getUsernameByToken() {
-    const headers = this.authService.getAuthHeaders();
-    this.contentService
-      .getUsernameByToken({ headers, withCredentials: true })
-      .subscribe({
-        next: (response: any) => {
-          this.username = response.username as string;
-          this.getUserContent();
-        },
-        error: (error) => {
-          console.error('Error fetching secure data:', error);
-        },
-      });
+    return this.contentService.getUsernameFromToken();
   }
 
   getUserContent() {
