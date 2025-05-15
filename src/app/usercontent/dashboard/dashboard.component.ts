@@ -64,6 +64,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.getUsernameByToken();
     this.choosePhrase();
+    this.getUserContent();
   }
 
   choosePhrase() {
