@@ -5,8 +5,9 @@ import { API_URL } from '../../contants.js';
 import { AuthService } from './auth.service.js';
 import { jwtDecode } from 'jwt-decode';
 
-interface TokenPayload {
+export interface TokenPayload {
   username: string;
+  isverified: boolean;
   type: number;
   iat: number;
   exp: number;

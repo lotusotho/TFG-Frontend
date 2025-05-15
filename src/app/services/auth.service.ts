@@ -3,6 +3,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { API_URL } from '../../contants.js';
+import { jwtDecode } from 'jwt-decode';
+import { TokenPayload } from './content.service.js';
 
 @Injectable({
   providedIn: 'root',
@@ -71,6 +73,19 @@ export class AuthService {
 
   getToken(): string | null {
     return localStorage.getItem('authToken');
+  }
+
+  getIsVerifiedFromToken(): boolean {
+    const token = this.getToken();
+    if (!token) return false;
+
+    try {
+      const decoded = jwtDecode<TokenPayload>(token);
+      return decoded.isverified;
+    } catch (error) {
+      console.error('Error decoding token', error);
+      return false;
+    }
   }
 
   sendVerificationEmail(formData: any): Observable<any> {

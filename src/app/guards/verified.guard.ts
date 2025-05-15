@@ -23,28 +23,14 @@ export class VerifiedGuard implements CanActivate {
     private authService: AuthService
   ) {}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean> {
-    return this.http
-      .get<{ verified: boolean }>(`${API_URL}/isverified`, {
-        headers: this.authService.getAuthHeaders(),
-        withCredentials: true,
-      })
-      .pipe(
-        map((response) => {
-          if (response.verified) {
-            return true;
-          } else {
-            this.router.navigate(['/not-verified']);
-            return false;
-          }
-        }),
-        catchError((error) => {
-          this.router.navigate(['/not-verified']);
-          return of(false);
-        })
-      );
+  canActivate() {
+    let isVerified = this.authService.getIsVerifiedFromToken();
+
+    if (isVerified) {
+      return true;
+    } else {
+      this.router.navigate(['/not-verified']);
+      return false;
+    }
   }
 }
