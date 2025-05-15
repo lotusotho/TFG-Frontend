@@ -37,16 +37,16 @@ export class ContentService {
     );
   }
 
-  getUsernameFromToken(): string | null {
+  getUsernameFromToken(): string {
     const token = this.authService.getToken();
-    if (!token) return null;
+    if (!token) return '';
 
     try {
       const decoded = jwtDecode<TokenPayload>(token);
       return decoded.username;
     } catch (error) {
       console.error('Error decoding token', error);
-      return null;
+      return '';
     }
   }
 

@@ -14,7 +14,7 @@ import { NgIf } from '@angular/common';
 })
 export class UsersettingsComponent implements OnInit {
   userContent: any;
-  username = '';
+  username: string = '';
   notificationType: string | null = null;
   showModal: boolean = false;
   showModalUserDelete: boolean = false;
@@ -31,7 +31,7 @@ export class UsersettingsComponent implements OnInit {
   }
 
   getUsernameByToken() {
-    return this.contentService.getUsernameFromToken();
+    this.username = this.contentService.getUsernameFromToken();
   }
 
   getUserContent() {

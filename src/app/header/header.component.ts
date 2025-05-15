@@ -22,8 +22,8 @@ import { ContentService } from '../services/content.service.js';
 })
 export class HeaderComponent implements OnInit {
   isAuthenticated: boolean = false;
-  notificationType: string | null = null;
-  username = '';
+  notificationType: string = '';
+  username: string | null = '';
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
@@ -44,7 +44,7 @@ export class HeaderComponent implements OnInit {
   }
 
   getUsernameByToken() {
-    return this.contentService.getUsernameFromToken();
+    this.username = this.contentService.getUsernameFromToken();
   }
 
   logOut() {

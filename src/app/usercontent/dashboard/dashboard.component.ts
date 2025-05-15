@@ -33,7 +33,7 @@ import { NotificationtoastComponent } from '../../notificationtoast/notification
 })
 export class DashboardComponent implements OnInit {
   formContent: FormGroup;
-  username = '';
+  username: string = '';
   userContent: any;
   text_content: any;
   current_phrase: string = '';
@@ -104,7 +104,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getUsernameByToken() {
-    return this.contentService.getUsernameFromToken();
+    this.username = this.contentService.getUsernameFromToken();
   }
 
   getUserContent() {
