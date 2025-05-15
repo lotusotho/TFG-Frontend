@@ -44,7 +44,7 @@ export class LoginComponent {
           Validators.pattern(usernameRegex),
         ],
       ],
-      password: ['', [Validators.required, Validators.minLength(5)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
