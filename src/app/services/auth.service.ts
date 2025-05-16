@@ -47,7 +47,7 @@ export class AuthService {
 
   logout() {
     this.httpClient
-      .get(`${this.API_URL}/logout`, {
+      .post(`${this.API_URL}/logout`, {
         headers: this.getAuthHeaders(),
       })
       .subscribe({
@@ -109,7 +109,7 @@ export class AuthService {
   }
 
   verifyEmail(token: string): Observable<any> {
-    return this.httpClient.get(`${this.API_URL}/verify-email`, {
+    return this.httpClient.post(`${this.API_URL}/verify-email`, {
       params: { token },
     });
   }
