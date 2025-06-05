@@ -7,11 +7,12 @@ import {
 } from '@angular/core';
 import { DatePipe, isPlatformBrowser, NgFor } from '@angular/common';
 import { ContentService } from '../services/content.service.js';
+import { FeaturedpostmodalComponent } from '../featuredpostmodal/featuredpostmodal.component';
 
 @Component({
   selector: 'app-featuredpost',
   standalone: true,
-  imports: [NgFor, DatePipe],
+  imports: [NgFor, DatePipe, FeaturedpostmodalComponent],
   templateUrl: './featuredpost.component.html',
   styleUrl: './featuredpost.component.css',
 })

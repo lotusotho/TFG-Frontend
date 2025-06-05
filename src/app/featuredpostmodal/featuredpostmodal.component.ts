@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { FeaturedPosts } from '../../types/types.js';
 import { NgFor } from '@angular/common';
 
 @Component({
@@ -10,5 +9,5 @@ import { NgFor } from '@angular/common';
   styleUrl: './featuredpostmodal.component.css',
 })
 export class FeaturedpostmodalComponent {
-  @Input() featuredPosts: FeaturedPosts[] = [];
+  @Input() allPostsData: any[] = [];
 }
