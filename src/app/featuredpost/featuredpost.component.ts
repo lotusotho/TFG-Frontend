@@ -6,70 +6,33 @@ import {
   OnInit,
 } from '@angular/core';
 import { isPlatformBrowser, NgFor } from '@angular/common';
-import { FeaturedPosts } from '../../types/types.js';
-import { FeaturedpostmodalComponent } from '../featuredpostmodal/featuredpostmodal.component';
+import { ContentService } from '../services/content.service.js';
 
 @Component({
   selector: 'app-featuredpost',
   standalone: true,
-  imports: [NgFor, FeaturedpostmodalComponent],
+  imports: [NgFor],
   templateUrl: './featuredpost.component.html',
   styleUrl: './featuredpost.component.css',
 })
 export class FeaturedpostComponent {
-  featuredPosts: FeaturedPosts[] = [
-    {
-      title: 'Hatsune Miku 💙',
-      description:
-        '¡Hola! Soy Hatsune Miku, una cantante virtual con una voz única y una gran pasión por la música. En mi blog, compartiré mis proyectos y conciertos.',
-      img: 'assets/img/miku_banner.jpg',
-      alt: 'Hatsune Miku Banner',
-      date: '14:30 PM - 27 diciembre 2007',
-    },
-    {
-      title: 'Kagamine Len 💛',
-      description:
-        '¡Hola! Soy Len Kagamine, un cantante energético y siempre listo para una nueva aventura. ¡Sigue mi blog para conocer mis últimas noticias y proyectos!',
-      img: 'assets/img/len_banner.jpg',
-      alt: 'Len Kagamine Banner',
-      date: '14:30 PM - 27 diciembre 2007',
-    },
-    {
-      title: 'Kagamine Rin 💛',
-      description:
-        '¡Hola a todos! Soy Rin Kagamine, una cantante llena de vida y entusiasmo. ¡No te pierdas mis publicaciones para estar al tanto de mis aventuras y canciones!',
-      img: 'assets/img/rin_banner.jpg',
-      alt: 'Rin Kagamine Banner',
-      date: '14:30 PM - 27 diciembre 2007',
-    },
-    {
-      title: 'Kaito 💙',
-      description:
-        '¡Saludos! Soy Kaito, un cantante con una voz profunda y carismática. En mi blog, compartiré mis experiencias y novedades musicales. ¡Acompáñame en este viaje!',
-      img: 'assets/img/kaito_banner.jpg',
-      alt: 'Kaito Banner',
-      date: '14:30 PM - 27 diciembre 2007',
-    },
-    {
-      title: 'Meiko 💜',
-      description:
-        '¡Hola! Soy Meiko, una cantante apasionada y poderosa. En mi blog, encontrarás mis pensamientos, proyectos y todo lo relacionado con mi música. ¡No te lo pierdas!',
-      img: 'assets/img/meiko_banner.jpg',
-      alt: 'Meiko Banner',
-      date: '14:30 PM - 27 diciembre 2007',
-    },
-    {
-      title: 'Utatane Piko 🤍',
-      description:
-        '¡Hola! Soy Utatane Piko, un cantante con una voz única y versátil. En mi blog, compartiré mis experiencias, proyectos y todo lo relacionado con mi música.',
-      img: 'assets/img/utatane_banner.jpg',
-      alt: 'Utatane Piko Banner',
-      date: '14:30 PM - 27 diciembre 2007',
-    },
-  ];
+  allPostsData: any[] = [];
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private contentService: ContentService
+  ) {}
 
+  getPosts() {
+    this.contentService.getAllPosts().subscribe({
+      next: (response: any) => {
+        this.allPostsData = response.data;
+      },
+      error: (error: any) => {
+        console.log('Error getting all posts', error);
+      },
+    });
+  }
   // Functions to open and close a modal
   openModal($el: HTMLElement) {
     $el.classList.add('is-active');

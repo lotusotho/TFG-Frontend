@@ -3,12 +3,12 @@
 <div class="m-4">
   <div class="container fixed-grid has-3-cols has-1-cols-mobile">
     <div class="grid">
-      <div *ngFor="let post of featuredPosts; let i = index">
+      <div *ngFor="let post of allPostsData; let i = index">
         <div class="card" data-aos="fade-up">
           <a class="js-modal-trigger" [attr.data-target]="'modalId' + i">
             <div class="card-image">
               <figure class="image is-4by3">
-                <img src="{{ post.img }}" alt="{{ post.alt }}" />
+                <img src="https://picsum.photos/640/640" />
               </figure>
             </div>
             <div class="card-content">
@@ -18,12 +18,6 @@
                   <p class="subtitle is-6"></p>
                 </div>
               </div>
-
-              <div class="content">
-                {{ post.description }}
-                <br />
-                <p>{{ post.date }}</p>
-              </div>
             </div>
           </a>
         </div>
@@ -31,4 +25,3 @@
     </div>
   </div>
 </div>
-<app-featuredpostmodal [featuredPosts]="featuredPosts"></app-featuredpostmodal>
