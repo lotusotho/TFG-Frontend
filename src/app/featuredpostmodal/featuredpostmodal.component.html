@@ -10,7 +10,7 @@
         <p class="subtitle">{{ post.title }}</p>
       </section>
       <a
-        [routerLink]="['/userblog?blog={{post.user.username}}']"
+        [routerLink]="['/userblog?blog=' + post.user.username]"
         routerLinkActive="router-link-active"
         class="button is-success is-4 m-5"
         >Ver blog</a

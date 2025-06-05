@@ -5,6 +5,9 @@ img {
 }
 
 .emoji {
+  display: flex;
+  justify-content: center;
   text-align: center;
-  font-size: 2rem;
+  font-size: 10rem;
+  height: 100%;
 }
