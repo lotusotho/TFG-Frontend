@@ -5,13 +5,13 @@ import {
   PLATFORM_ID,
   OnInit,
 } from '@angular/core';
-import { isPlatformBrowser, NgFor } from '@angular/common';
+import { DatePipe, isPlatformBrowser, NgFor } from '@angular/common';
 import { ContentService } from '../services/content.service.js';
 
 @Component({
   selector: 'app-featuredpost',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, DatePipe],
   templateUrl: './featuredpost.component.html',
   styleUrl: './featuredpost.component.css',
 })
