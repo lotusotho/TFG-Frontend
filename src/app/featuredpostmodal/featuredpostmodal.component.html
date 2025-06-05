@@ -8,13 +8,13 @@
       </header>
       <section class="modal-card-body">
         <p class="subtitle">{{ post.title }}</p>
+        <a
+          href="https://blog.mapach.es/userblog?blog={{ post.user.username }}"
+          target="_blank"
+          class="button is-success is-4 m-5"
+          >Ver blog</a
+        >
       </section>
-      <a
-        [routerLink]="['/userblog?blog=' + post.user.username]"
-        routerLinkActive="router-link-active"
-        class="button is-success is-4 m-5"
-        >Ver blog</a
-      >
     </div>
   </div>
 </div>
