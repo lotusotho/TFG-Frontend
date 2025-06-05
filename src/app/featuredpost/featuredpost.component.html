@@ -8,15 +8,21 @@
           <a class="js-modal-trigger" [attr.data-target]="'modalId' + i">
             <div class="card-image">
               <figure class="image is-4by3">
-                <img src="https://picsum.photos/640/640" />
+                <img src="https://unavatar.io/x/{{ post.user.username }}" />
               </figure>
             </div>
             <div class="card-content">
               <div class="media">
                 <div class="media-content">
-                  <p class="title is-4">{{ post.title }}</p>
+                  <p class="title is-4">{{ post.user.username }}</p>
                   <p class="subtitle is-6"></p>
                 </div>
+              </div>
+
+              <div class="content">
+                {{ post.title }}
+                <br />
+                <p>{{ post.date_updated | date : "medium" }}</p>
               </div>
             </div>
           </a>
