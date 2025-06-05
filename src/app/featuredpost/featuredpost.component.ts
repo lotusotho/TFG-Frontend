@@ -15,13 +15,17 @@ import { ContentService } from '../services/content.service.js';
   templateUrl: './featuredpost.component.html',
   styleUrl: './featuredpost.component.css',
 })
-export class FeaturedpostComponent {
+export class FeaturedpostComponent implements OnInit {
   allPostsData: any[] = [];
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private contentService: ContentService
   ) {}
+
+  ngOnInit(): void {
+    this.getPosts();
+  }
 
   getPosts() {
     this.contentService.getAllPosts().subscribe({
