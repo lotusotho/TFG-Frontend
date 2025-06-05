@@ -3,3 +3,8 @@ img {
   width: 640px;
   height: 640px;
 }
+
+.emoji {
+  text-align: center;
+  font-size: 2rem;
+}

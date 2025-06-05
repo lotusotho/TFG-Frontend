@@ -9,6 +9,11 @@
       <section class="modal-card-body">
         <p class="subtitle">{{ post.title }}</p>
       </section>
+      <a
+        [routerLink]="['/userblog?blog={{post.user.username}}']"
+        routerLinkActive="router-link-active"
+        >Ver blog</a
+      >
     </div>
   </div>
 </div>
