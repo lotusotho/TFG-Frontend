@@ -30,8 +30,9 @@ export class VerifyaccountComponent implements OnInit {
         next: (response) => {
           console.log('Verification successful', response);
           this.verificationSuccess = true;
+          this.authService.logout();
           setTimeout(() => {
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/login']);
           }, 3000);
         },
         error: (error) => {
