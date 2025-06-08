@@ -5,7 +5,8 @@
     "packageManager": "pnpm",
     "cache": {
       "enabled": true
-    }
+    },
+    "analytics": false
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -22,6 +23,7 @@
             "outputPath": "dist/tfg-frontend",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "ssr": false,
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "assets": [
@@ -55,12 +57,7 @@
               "node_modules/katex/dist/contrib/auto-render.min.js",
               "node_modules/mermaid/dist/mermaid.min.js",
               "node_modules/clipboard/dist/clipboard.min.js"
-            ],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            ]
           },
           "configurations": {
             "production": {
