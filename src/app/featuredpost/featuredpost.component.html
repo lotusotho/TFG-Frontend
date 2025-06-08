@@ -5,7 +5,11 @@
     <div class="grid">
       <div *ngFor="let post of allPostsData; let i = index">
         <div class="card">
-          <a class="js-modal-trigger" [attr.data-target]="'modalId' + i">
+          <a
+            class="js-modal-trigger"
+            [attr.data-target]="'modalId' + i"
+            (click)="openModalById('modalId' + i)"
+          >
             <div class="card-image">
               <figure class="image is-4by3">
                 <p class="emoji">{{ post.emoji }}</p>

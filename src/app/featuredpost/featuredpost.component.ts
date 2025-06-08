@@ -32,15 +32,46 @@ export class FeaturedpostComponent implements OnInit {
     this.contentService.getAllPosts().subscribe({
       next: (response: any) => {
         this.allPostsData = response.data;
+        setTimeout(() => this.initModalTriggers(), 0);
       },
       error: (error: any) => {
         console.log('Error getting all posts', error);
       },
     });
   }
-  // Functions to open and close a modal
+
+  private initModalTriggers() {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    document.querySelectorAll('.js-modal-trigger').forEach(($trigger) => {
+      const modal = ($trigger as HTMLElement).dataset['target']!;
+      const $target = document.getElementById(modal);
+      $trigger.addEventListener(
+        'click',
+        () => $target && this.openModal($target)
+      );
+    });
+
+    document
+      .querySelectorAll(
+        '.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button'
+      )
+      .forEach(($close) => {
+        const $target = $close.closest('.modal') as HTMLElement | null;
+        $close.addEventListener(
+          'click',
+          () => $target && this.closeModal($target)
+        );
+      });
+  }
+
   openModal($el: HTMLElement) {
     $el.classList.add('is-active');
+  }
+
+  openModalById(modalId: string) {
+    const el = document.getElementById(modalId);
+    if (el) this.openModal(el);
   }
 
   closeModal($el: HTMLElement) {
@@ -56,32 +87,7 @@ export class FeaturedpostComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    if (isPlatformBrowser(this.platformId)) {
-      document.querySelectorAll('.js-modal-trigger').forEach(($trigger) => {
-        const modal = ($trigger as HTMLElement).dataset['target'];
-        const $target = document.getElementById(modal!);
-
-        $trigger.addEventListener('click', () => {
-          if ($target) {
-            this.openModal($target);
-          }
-        });
-      });
-
-      document
-        .querySelectorAll(
-          '.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button'
-        )
-        .forEach(($close) => {
-          const $target = $close.closest('.modal');
-
-          $close.addEventListener('click', () => {
-            if ($target) {
-              this.closeModal($target as HTMLElement);
-            }
-          });
-        });
-    }
+    this.initModalTriggers();
   }
 
   @HostListener('document:keydown.escape', ['$event'])
