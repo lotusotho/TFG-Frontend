@@ -52,7 +52,10 @@
     ❌ Usuario o contraseña incorrectos.
   </div>
 
-  <div *ngSwitchCase="'registrationSuccess'" class="notification is-success">
+  <div
+    *ngSwitchCase="'registrationSuccess'"
+    class="notification is-success with-spinner"
+  >
     <button class="delete"></button>
     🎉 Te has registrado correctamente, mira tu correo y haz click en el enlace
     para confirmar tu cuenta.

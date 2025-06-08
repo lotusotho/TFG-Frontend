@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { NgIf } from '@angular/common';
+import { NotificationtoastComponent } from '../../notificationtoast/notificationtoast.component';
 
 @Component({
   selector: 'app-verifyaccount',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf, NotificationtoastComponent],
   templateUrl: './verifyaccount.component.html',
   styleUrls: ['./verifyaccount.component.css'],
 })

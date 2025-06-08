@@ -7,16 +7,12 @@
       </button>
     </div>
   </div>
-  <div *ngIf="verificationSuccess === true" class="notification is-success">
-    <span class="icon">
-      <i class="fas fa-check"></i>
-    </span>
-    <span>¡Verificación exitosa!</span>
-  </div>
-  <div *ngIf="verificationSuccess === false" class="notification is-danger">
-    <span class="icon">
-      <i class="fas fa-times"></i>
-    </span>
-    <span>La verificación falló. Por favor, inténtelo de nuevo.</span>
-  </div>
+  <app-notificationtoast>
+    *ngIf="verificationSuccess === true" notificationType="verified"
+    ></app-notificationtoast
+  >
+  <app-notificationtoast
+    *ngIf="verificationSuccess === false"
+    notificationType="loginError"
+  ></app-notificationtoast>
 </div>
