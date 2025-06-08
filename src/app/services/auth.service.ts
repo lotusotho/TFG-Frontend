@@ -108,18 +108,10 @@ export class AuthService {
     });
   }
 
-  verifyEmail(token: string): Observable<{ token: string }> {
-    return this.httpClient
-      .post<{ token: string }>(`${this.API_URL}/verify-email`, { token })
-      .pipe(
-        tap((response) => {
-          this.setToken(response.token);
-        })
-      );
-  }
-
-  setToken(token: string): void {
-    localStorage.setItem('authToken', token);
+  verifyEmail(token: string): Observable<any> {
+    return this.httpClient.get(`${this.API_URL}/verify-email`, {
+      params: { token },
+    });
   }
 
   deleteUser(
