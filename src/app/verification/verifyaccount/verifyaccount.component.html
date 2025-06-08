@@ -7,12 +7,16 @@
       </button>
     </div>
   </div>
-  <app-notificationtoast>
-    *ngIf="verificationSuccess === true" notificationType="verified"
-    ></app-notificationtoast
+
+  <app-notificationtoast
+    *ngIf="verificationSuccess === true"
+    notificationType="verified"
   >
+  </app-notificationtoast>
+
   <app-notificationtoast
     *ngIf="verificationSuccess === false"
-    notificationType="loginError"
-  ></app-notificationtoast>
+    notificationType="verificationError"
+  >
+  </app-notificationtoast>
 </div>

@@ -61,6 +61,11 @@
     para confirmar tu cuenta.
   </div>
 
+  <div *ngSwitchCase="'verificationError'" class="notification is-danger">
+    <button class="delete"></button>
+    ❌ Error al verificar la cuenta. Por favor, inténtalo de nuevo.
+  </div>
+
   <div
     *ngSwitchCase="'passwordRecoverySuccess'"
     class="notification is-success with-spinner"
