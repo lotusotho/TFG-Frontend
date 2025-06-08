@@ -1,10 +1,10 @@
 <div [ngSwitch]="notificationType">
-  <div *ngSwitchCase="'verified'" class="notification is-success">
+  <div *ngSwitchCase="'verified'" class="notification is-success with-spinner">
     <button class="delete"></button>
     ✅ Se ha verificado el correo de la cuenta.
   </div>
 
-  <div *ngSwitchCase="'changed'" class="notification is-success">
+  <div *ngSwitchCase="'changed'" class="notification is-success with-spinner">
     <button class="delete"></button>
     🔒 Se ha cambiado la contraseña.
   </div>
@@ -24,7 +24,10 @@
     ❌ ¡Oh no! Parece que tienes un blog vacio... ¡Hora de escribir algo 🖊️!
   </div>
 
-  <div *ngSwitchCase="'userDelete'" class="notification is-success">
+  <div
+    *ngSwitchCase="'userDelete'"
+    class="notification is-success with-spinner"
+  >
     <button class="delete"></button>
     🚫 Se ha eliminado el usuario correctamente.
   </div>
@@ -34,12 +37,12 @@
     ❌ El usuario ya existe.
   </div>
 
-  <div *ngSwitchCase="'login'" class="notification is-success">
+  <div *ngSwitchCase="'login'" class="notification is-success with-spinner">
     <button class="delete"></button>
     👋 Acabas de iniciar sesión. ¡Hola!
   </div>
 
-  <div *ngSwitchCase="'logout'" class="notification is-success">
+  <div *ngSwitchCase="'logout'" class="notification is-success with-spinner">
     <button class="delete"></button>
     👋 Has cerrado sesión correctamente. ¡Adiós!
   </div>
@@ -51,13 +54,13 @@
 
   <div *ngSwitchCase="'registrationSuccess'" class="notification is-success">
     <button class="delete"></button>
-    🎉 Te has registrado correctamente, ahora mira tu correo y haz click en el
-    enlace para confirmar tu cuenta.
+    🎉 Te has registrado correctamente, mira tu correo y haz click en el enlace
+    para confirmar tu cuenta.
   </div>
 
   <div
     *ngSwitchCase="'passwordRecoverySuccess'"
-    class="notification is-success"
+    class="notification is-success with-spinner"
   >
     <button class="delete"></button>
     💌 Se ha enviado el correo de recuperación de contraseña.

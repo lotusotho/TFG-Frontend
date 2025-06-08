@@ -8,7 +8,7 @@
   max-width: 90%;
 }
 
-.notification::before {
+.notification.with-spinner::before {
   content: "";
   display: inline-block;
   vertical-align: middle;
