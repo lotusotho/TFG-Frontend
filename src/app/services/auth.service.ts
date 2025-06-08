@@ -63,9 +63,20 @@ export class AuthService {
   }
 
   checkLogin() {
-    const authToken = localStorage.getItem('authToken');
-    if (authToken) {
-      this.isLoggedIn.next(true);
+    const token = this.getToken();
+    if (token) {
+      try {
+        const decoded = jwtDecode<TokenPayload>(token);
+        const now = Date.now() / 1000;
+        if (decoded.exp && decoded.exp > now) {
+          this.isLoggedIn.next(true);
+        } else {
+          this.logout();
+        }
+      } catch (error) {
+        console.error('Invalid token:', error);
+        this.logout();
+      }
     } else {
       this.isLoggedIn.next(false);
     }
