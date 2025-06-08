@@ -10,7 +10,6 @@ Frontend Angular para [blog.mapach.es](https://blog.mapach.es), una plataforma d
 - Diseño responsive con Bulma CSS
 - Optimización SEO (sitemap.xml, meta tags)
 - Integración con API RESTful
-- SSR (Server-Side Rendering)
 - Animaciones con AOS
 - Sistema de notificaciones toast
 
